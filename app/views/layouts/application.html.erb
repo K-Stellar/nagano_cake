@@ -21,6 +21,9 @@
             <ul class="navbar-nav ml-auto">
           <% if customer_signed_in? %>
             <li>
+              <p>ようこそ、<%= customer.last_name %>さん！</p>
+            </li>
+            <li>
               <%= link_to customers_path(current_customer.id) do %>
                 <div class="nav-link text-light">マイページ</div>
               <%end%>
@@ -41,6 +44,9 @@
               <%end%>
           </li>
           <% else %>
+            <li>
+              <p class="nav-link text-light">ようこそ、さん！</p>
+            </li>
             <li>
               <%= link_to about_path do %>
                 <div class="nav-link text-light">About</div>
