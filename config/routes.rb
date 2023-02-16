@@ -12,7 +12,7 @@ Rails.application.routes.draw do
  devise_for :admin, controllers: {
   sessions: "admin/sessions"
  }
-  
+
   scope module: :public do
     root to: "homes#top"
     get "/about"=>"homes#about"
