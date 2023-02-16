@@ -12,21 +12,23 @@ Rails.application.routes.draw do
  devise_for :admin, controllers: {
   sessions: "admin/sessions"
  }
-
-  root to: "homes#top"
-  get "/about"=>"homes#about"
-  resources :products, only: [:index, :show]
-  resource :customers, only: [:show, :edit, :update] do
-    get :check, on: :collection
-    get :withdrowl, on: :collection
-    resource :addresses, only: [:index, :edit, :create, :update, :destroy]
-  end
-  resources :cart_items, only: [:index, :update, :destroy, :create] do
-    delete :destroy_all, on: :collection
-  end
-  resources :orders, only: [:new, :create, :index, :show] do
-    post :check, on: :member
-    get :complete, on: :collection
+  
+  scope module: :public do
+    root to: "homes#top"
+    get "/about"=>"homes#about"
+    resources :products, only: [:index, :show]
+    resource :customers, only: [:show, :edit, :update] do
+      get :check, on: :collection
+      get :withdrowl, on: :collection
+      resource :addresses, only: [:index, :edit, :create, :update, :destroy]
+    end
+    resources :cart_items, only: [:index, :update, :destroy, :create] do
+      delete :destroy_all, on: :collection
+    end
+    resources :orders, only: [:new, :create, :index, :show] do
+      post :check, on: :member
+      get :complete, on: :collection
+    end
   end
 
   namespace :admin do
