@@ -1,0 +1,8 @@
+ja:
+  enums:
+    admin:
+      email:
+        email: "メールアドレス"
+    customer:
+      email:
+        email: "メールアドレス"
