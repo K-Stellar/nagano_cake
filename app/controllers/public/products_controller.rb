@@ -4,4 +4,5 @@ class Public::ProductsController < ApplicationController
 
   def show
   end
+  
 end
