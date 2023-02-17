@@ -1,12 +1,51 @@
-<div class='col-2'>
-  <% @products.each do |product| %>
-    <div class="form-group row">
-      <label class="col-4 text-right">商品画像</label>
-      <%= f.file_field :image, class: "col-4 form-control-file pl-0", accept: "image/*" %>
-    </div>
-    <div class="form-group row">
-      <label class="col-4 text-right">商品名</label>
-      <%= f.text_field :name, class: "col-4 form-control name", placeholder: "商品名" %>
-    </div>
-  <% end %>
+<div class="d-flex align-content-start flex-wrap">
+  <div class='col-3'>
+    <%= image_tag 'Logo.png', size: '150x100', class:'rounded' %>
+    <p>クッキー</p>
+    <p>¥1000</p>
+  </div>
+  <div class='col-3'>
+    <%= image_tag 'Logo.png', size: '150x100', class:'rounded' %>
+    <p>クッキー</p>
+    <p>¥1000</p>
+  </div>
+  <div class='col-3'>
+    <%= image_tag 'Logo.png', size: '150x100', class:'rounded' %>
+    <p>クッキー</p>
+    <p>¥1000</p>
+  </div>
+  <div class='col-3'>
+    <%= image_tag 'Logo.png', size: '150x100', class:'rounded' %>
+    <p>クッキー</p>
+    <p>¥1000</p>
+  </div>
+  <div class='col-3'>
+    <%= image_tag 'Logo.png', size: '150x100' %>
+    <p>クッキー</p>
+    <p>¥1000</p>
+  </div>
+  <div class='col-3'>
+    <%= image_tag 'Logo.png', size: '150x100' %>
+    <p>クッキー</p>
+    <p>¥1000</p>
+  </div>
+  <div class='col-3'>
+    <%= image_tag 'Logo.png', size: '150x100' %>
+    <p>クッキー</p>
+    <p>¥1000</p>
+  </div>
+  <div class='col-3'>
+    <%= image_tag 'Logo.png', size: '150x100' %>
+    <p>クッキー</p>
+    <p>¥1000</p>
+  </div>
 </div>
+
+
+
+
+  <!--<% @products.each do |product| %>-->
+  <!--  <%= image_tag product.get_image, size:'400x200' %>-->
+  <!--  <%= product.name %>-->
+  <!--  ¥<%= product.price %>-->
+  <!--<% end %>-->
