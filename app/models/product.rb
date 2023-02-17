@@ -6,6 +6,10 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :information, presence: true
   validates :price, presence: true
+  
+  def add_tax_price
+    (self.price * 1.08).round
+  end
 
   def get_image
     unless image.attached?

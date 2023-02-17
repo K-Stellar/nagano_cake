@@ -2,13 +2,13 @@
 <div class='container mx-'>
   <div class='row'>
     <div class='col-md-3'>
-      <p>ジャンル検索</p>
+      <p>ジャンル検索部分テンプレート</p>
     </div>
     <div class='col-md-9'>
       <div class="product-info row">
         <div class='col-md-6'>
           <div>商品画像<br>
-          <img src='app/assets/images/no_image.jpg'>
+            <img src="app/assets/images/no_image.jpg">
             <!--%= image_tag @product.get_image (100,100) %>-->
           </div>
         </div>
@@ -17,15 +17,16 @@
           <h1>チーズケーキ</h1>
           <!--<h4>%= @product.information %></h4>-->
           <h4>レアじゃないチーズケーキが食べたい</h4>
-          <!--<h2>%= @product.price %> (税込)</h2>-->
+          <!--<h2>¥ %= @product.add_tax_price.to_s(:delimited) %> (税込)</h2>-->
           <h2>500円 (税込)</h2>
+          <div class='row mt-5 mx-3'>
+            <%= form_with model: @cart_item do |f| %>
+              <!--%= f.hidden_field product_id, value: @product.id %>-->
+              <%= f.select :amount, options_for_select((1..100).to_a), include_blank: "個数選択", class: 'text-center' %>
+              <%= link_to 'カートに入れる', cart_items_path, class: 'btn btn-success' %>
+            <% end %>
+          </div>
         </div>
-      </div>
-      <div class="product-count">
-        <%= form_with model: @cart_item do |f| %>
-          <%= f.select :amount, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"]], include_blank: "個数選択", class: 'text-center' %>
-          <%= link_to 'カートに入れる', cart_items_path, class: 'btn btn-success' %>
-        <% end %>
       </div>
     </div>
   </div>
