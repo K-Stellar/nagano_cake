@@ -5,6 +5,7 @@ class Admin::ProductsController < ApplicationController
   def new
     @product=Product.new
     @products=Product.all
+    @genres=Genre.all
   end
 
   def show
@@ -18,7 +19,7 @@ class Admin::ProductsController < ApplicationController
     if @product.save
       redirect_to new_admin_product_path #商品詳細ページのパスへ変更予定
     else
-      render ''
+      render 'index'
     end
   end
   
