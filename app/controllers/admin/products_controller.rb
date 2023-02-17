@@ -3,6 +3,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def new
+    @product=Product.new
   end
 
   def show

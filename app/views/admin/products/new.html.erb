@@ -1,2 +1,13 @@
-<h1>Admin::Products#new</h1>
-<p>Find me in app/views/admin/products/new.html.erb</p>
+<div class="container">
+  <div class="low">
+    <div class="col">
+        <h3><span class="bg-light bg-gradient">商品新規登録</span></h3>
+        <%= form_with model: @product, local:true, class: "flex-column" do |f| %>
+        <div class="">
+            <%= f.label :商品画像 %>
+            <%= f.file_field :image, class: "form-control-file", accept: "image/*" %>
+        </div>
+        <%end%>
+    </div>
+  </div>
+</div>
