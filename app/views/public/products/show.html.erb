@@ -1,31 +1,33 @@
-<h1>Products#show</h1>
-<div class='container mx-'>
-  <div class='row'>
+<div class='container my-5'>
+  <div class='row style="height:300px"'>
     <div class='col-md-3'>
       <p>ジャンル検索部分テンプレート</p>
     </div>
     <div class='col-md-9'>
-      <div class="product-info row">
-        <div class='col-md-6'>
+      <div class="row">
+        <div class='col-md-5'>
           <div>商品画像<br>
             <img src="app/assets/images/no_image.jpg">
             <!--%= image_tag @product.get_image (100,100) %>-->
           </div>
         </div>
-        <div class='col-md-6'>
-          <!--<h1>%= @product.name %></h1>-->
-          <h1>チーズケーキ</h1>
-          <!--<h4>%= @product.information %></h4>-->
-          <h4>レアじゃないチーズケーキが食べたい</h4>
+        <div class='col-md-7 px-3'>
+          <!--<h2><strong>%= @product.name %></strong></h2>-->
+          <h2><strong>チーズケーキ</strong></h2>
+          <!--<p>%= @product.information %></p>-->
+          <p class='my-3'><strong>レアじゃないチーズケーキが食べたい</strong></p>
           <!--<h2>¥ %= @product.add_tax_price.to_s(:delimited) %> (税込)</h2>-->
-          <h2>500円 (税込)</h2>
-          <div class='row mt-5 mx-3'>
-            <%= form_with model: @cart_item do |f| %>
-              <!--%= f.hidden_field product_id, value: @product.id %>-->
-              <%= f.select :amount, options_for_select((1..100).to_a), include_blank: "個数選択", class: 'text-center' %>
-              <%= link_to 'カートに入れる', cart_items_path, class: 'btn btn-success' %>
-            <% end %>
-          </div>
+          <h4>¥1,296<span class="font-size:10px;">(税込)</span></h4>
+        </div>
+      </div>
+      <div class='row px-3 mt-3'>
+        <div class='col-md-5'></div>
+        <div class='col-md-7 px-3'>
+          <%= form_with model: @cart_item do |f| %>
+            <!--%= f.hidden_field product_id, value: @product.id %>-->
+            <%= f.select :amount, options_for_select((1..100).to_a), include_blank: "個数選択" %>
+            <%= link_to 'カートに入れる', cart_items_path, class: 'btn btn-success' %>
+          <% end %>
         </div>
       </div>
     </div>
