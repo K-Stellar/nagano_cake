@@ -1,0 +1,84 @@
+<header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="/"><%= image_tag 'Logo.png', size: '280x100' %></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+          <% if customer_signed_in? %>
+            <li>
+              <p>ようこそ、<%= customer.last_name %>さん！</p>
+            </li>
+            <li>
+              <%= link_to customers_path(current_customer.id) do %>
+                <div class="nav-link text-light">マイページ</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to products_path do %>
+                <div class="nav-link text-light">商品一覧</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to cart_items_path do %>
+                <div class="nav-link text-light">カート</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to destroy_customer_session_path, method: :delete do %>
+                <div class="nav-link text-light">Log out</div>
+              <%end%>
+            </li>
+          <% elsif admin_signed_in? %>
+            <li>
+              <%= link_to admin_products_path do %>
+                <div class="nav-link text-light">商品一覧</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to admin_customers_path do %>
+                <div class="nav-link text-light">会員一覧</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to admin_root_path do %>
+                <div class="nav-link text-light">注文履歴一覧</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to admin_genres_path do %>
+                <div class="nav-link text-light">ジャンル一覧</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to destroy_admin_session_path do %>
+                <div class="nav-link text-light">ログアウト</div>
+              <%end%>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to about_path do %>
+                <div class="nav-link text-light">About</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to products_path do %>
+                <div class="nav-link text-light">商品一覧</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to new_customer_registration_path do %>
+                <div class="nav-link text-light">新規登録</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to new_customer_session_path do %>
+                <div class="nav-link text-light">ログイン</div>
+              <%end%>
+            </li>
+          <% end %>
+        </div>
+      </nav>
+    </header>
