@@ -1,7 +1,12 @@
-<h1>ジャンル一覧・追加</h1>
+<h5>ジャンル一覧・追加</h5>
 <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
   <h4>ジャンル名</h4>
   <%= f.text_field :name %>
-  
+
   <%= f.submit '新規登録' %>
+<% end %>
+
+<% @genres.each do |genre| %>
+  <p>ジャンル</p>
+  <span><%= genre.name %></span>
 <% end %>
