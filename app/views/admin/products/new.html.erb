@@ -1,2 +1,59 @@
-<h1>Admin::Products#new</h1>
-<p>Find me in app/views/admin/products/new.html.erb</p>
+<div class="container my-5">
+  <div class="row">
+    <div class="col">
+        <h3><span class="bg-light bg-gradient">商品新規登録</span></h3>
+        <%= form_with model: @product, url: admin_products_path, local:true, class: "container text-center pl-9" do |f| %>
+        <div class="form-group row">
+          <label class="col-4 text-right">商品画像</label>
+          <%= f.file_field :image, class: "col-4 form-control-file pl-0", accept: "image/*" %>
+        </div>
+        <div class="form-group row">
+          <label class="col-4 text-right">商品名</label>
+          <%= f.text_field :name, class: "col-4 form-control name", placeholder: "商品名" %>
+        </div>
+        <div class="form-group row">
+          <label class="col-4 text-right">商品説明</label>
+          <%= f.text_area :information, class: "col-4 form-control infomation", placeholder: "ここに説明文を記述します" %>
+        </div>
+        <div class="form-group row">
+          <label class="col-4 text-right">ジャンル</label>
+          <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %>
+        </div>
+        <div class="form-group row">
+          <label class="col-4 text-right">税抜価格</label>
+          <%= f.text_field :price, class: "col-4 form-control price", placeholder: "1000" %>円
+        </div>
+        <div class="form-group row">
+          <label class="col-4 text-right">販売ステータス</label>
+          <%= f.radio_button :is_active, :true %>
+          <%= f.label :is_active, "販売中", class: "mr-5" %>
+          <%= f.radio_button :is_active, :false %>
+          <%= f.label :is_active, "販売停止中"%>
+        </div>
+        <div class="form-group text-center">
+          <%= f.submit "新規登録", class: "btn btn-success btn-lg" %>
+        </div>
+        <%end%>
+        <!--確認用（後程削除）-->
+        <table class="table table-hover table-inverse">
+          <thead>
+            <th>名前</th>
+            <th>画像</th>
+            <th>説明</th>
+            <th>値段</th>
+            <th>ステータス</th>
+          </thead>
+          <% @products.each do |product| %>
+            <tbody>
+                <td><%= product.name %></td>
+                <td><%= image_tag product.get_image, size:'400x200' %></td>
+                <td><%= product.information %></td>
+                <td><%= product.price %>円</td>
+                <td><%= product.is_active ? '販売中' : '販売中止中' %></td>
+            </tbody>
+          <%end%>
+        </table>
+        <!--ここまで確認用-->
+    </div>
+  </div>
+</div>
