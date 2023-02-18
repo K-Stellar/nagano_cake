@@ -10,8 +10,8 @@ class Product < ApplicationRecord
     (image.attached?) ? image : 'no_image.jpg'
   end
 
-  def add_tax_price
-    (self.price*1.08).round
+  def include_tax_price
+    (price*1.08).floor
   end
 
 end
