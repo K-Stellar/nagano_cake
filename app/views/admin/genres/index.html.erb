@@ -6,21 +6,20 @@
         <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
           <h4>ジャンル名</h4>
           <%= f.text_field :name %>
-        
+
           <%= f.submit '新規登録' %>
         <% end %>
-        
-        <% @genres.each do |genre| %>
+
         <thead>
-          <tr>
-             <th>ジャンル</th>
-          </tr>
+          <th>ジャンル</th>
         </thead>
-        <tbody>
-          <tr>
-            <td><%= genre.name %></td>
-          </tr>
-        </tbody>
+        <% @genres.each do |genre| %>
+          <tbody>
+            <tr>
+              <td class="col-3"><%= genre.name %></td>
+              <td><%= link_to "編集する", edit_admin_genre_path(genre) %></td>
+            </tr>
+          </tbody>
         <% end %>
       </table>
     </div>
