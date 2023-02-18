@@ -12,6 +12,7 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"
+import "../packs/footer.css"
 
 Rails.start()
 Turbolinks.start()
