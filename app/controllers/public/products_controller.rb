@@ -1,5 +1,7 @@
 class Public::ProductsController < ApplicationController
   def index
+    @products=Product.all
+    @products_page=Product.page(params[:page])
   end
 
   def show
@@ -7,10 +9,11 @@ class Public::ProductsController < ApplicationController
     @cart_item = CartItem.new
   end
 
+
   private
 
   def product_params
-    params.require(:product).permit(:name, :information, :price, :image)
+    params.require(:product).permit(:name, :information, :image, :genre_id, :price, :is_active)
   end
 
 end
