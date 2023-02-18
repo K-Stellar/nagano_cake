@@ -1,2 +1,54 @@
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
+<div class='container shadow-lg'>
+    <div class='row'>
+      <div class="col-lg-6 col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+
+        <h3 class="mb-5 border-bottom">マイページ</h3>
+
+        <div  class='row pb-3'>
+          <h4 class="mb-3 col-3">登録情報</h4>
+          <%= link_to  '編集する', edit_customers_path(@customer), class:"btn btn-success" %>
+        </div>
+
+        <table class="table table-bordered">
+          <tbody>
+              <tr class="row">
+                  <th class='bg-light col-lg-4'>氏名</th>
+                  <td class='col-lg-8 py-2'><%= current_customer.last_name %> <%= current_customer.first_name %></td>
+              </tr>
+              <tr class="row">
+                  <th class='bg-light col-lg-4'>カナ</th>
+                  <td class='col-lg-8 py-2'><%= current_customer.last_name_kana %></td>
+              </tr>
+              <tr class="row">
+                  <th class='bg-light col-lg-4'>郵便番号</th>
+                  <td class='col-lg-8 py-2'><%= current_customer.postal_code %></td>
+              </tr>
+              <tr class="row">
+                  <th class='bg-light col-lg-4'>住所</th>
+                  <td class='col-lg-8 py-2'><%= current_customer.address %></td>
+              </tr>
+              <tr class="row">
+                  <th class='bg-light col-lg-4'>電話番号</th>
+                  <td class='col-lg-8 py-2'><%= current_customer.phone_num %></td>
+              </tr>
+              <tr class="row">
+                  <th class='bg-light col-lg-4'>メールアドレス</th>
+                  <td class='col-lg-8 py-2'><%= current_customer.email %></td>
+              </tr>
+
+          </tbody>
+        </table>
+
+        <div  class='row pb-3'>
+          <h4 class="mb-3 col-3">配送先</h4>
+          <%= link_to  '編集する', edit_customers_path(@customer), class:"btn btn-info" %>
+        </div>
+
+        <div  class='row pb-3'>
+          <h4 class="mb-3 col-3">注文履歴</h4>
+          <%= link_to  '編集する', edit_customers_path(@customer), class:"btn btn-info" %>
+        </div>
+
+      </div>
+    </div>
+</div>
