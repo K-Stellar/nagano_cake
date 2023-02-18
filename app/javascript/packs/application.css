@@ -4,3 +4,12 @@ body > footer {
   position: sticky;
   top: 100vh;
 }
+
+.pagination>li>a {
+  border: none;
+}
+
+.pagination>.active>a {
+    background-color: #c45500 !important;
+    border-color: #c45500 !important;
+  }
