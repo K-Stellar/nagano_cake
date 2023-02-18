@@ -7,31 +7,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-          <% if customer_signed_in? %>
-            <li>
-              <p>ようこそ、<%= current_customer.last_name %>さん！</p>
-            </li>
-            <li>
-              <%= link_to customers_path(current_customer.id) do %>
-                <div class="nav-link text-light">マイページ</div>
-              <%end%>
-            </li>
-            <li>
-              <%= link_to products_path do %>
-                <div class="nav-link text-light">商品一覧</div>
-              <%end%>
-            </li>
-            <li>
-              <%= link_to cart_items_path do %>
-                <div class="nav-link text-light">カート</div>
-              <%end%>
-            </li>
-            <li>
-              <%= link_to destroy_customer_session_path, method: :delete do %>
-                <div class="nav-link text-light">Log out</div>
-              <%end%>
-            </li>
-          <% elsif admin_signed_in? %>
+
+          <% if request.path.match(/\/admin(\/)?/) %>
             <li>
               <%= link_to admin_products_path do %>
                 <div class="nav-link text-light">商品一覧</div>
@@ -57,6 +34,34 @@
                 <div class="nav-link text-light">ログアウト</div>
               <%end%>
             </li>
+
+          <% elsif customer_signed_in? %>
+            <li>
+              <p class="nav-link text-light mr-5">ようこそ、<%= current_customer.last_name %>さん！</p>
+            </li>
+            <li>
+              <%= link_to customers_path(current_customer.id) do %>
+                <div class="nav-link text-light">マイページ</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to products_path do %>
+                <div class="nav-link text-light">商品一覧</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to cart_items_path do %>
+                <div class="nav-link text-light">カート</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to destroy_customer_session_path, method: :delete do %>
+                <div class="nav-link text-light">Log out</div>
+              <%end%>
+            </li>
+
+
+
           <% else %>
             <li>
               <%= link_to about_path do %>
