@@ -1,2 +1,48 @@
-<h1>CartItems#index</h1>
-<p>Find me in app/views/cart_items/index.html.erb</p>
+<div class="container my-5">
+  <div class="row mb-3">
+    <div class="col-8">
+      <h4><span class="text-light bg-secondary">　ショッピングカート　</span></h4>
+    </div>
+    <div class="col-4">
+      <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class:'btn btn-danger' %>
+    </div>
+  </div>
+
+  <% if @cart_items.present? %>
+
+    <div class="row">
+      <table>
+        <thead>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </thead>
+        <tbody>
+        <% @cart_item.each do |cart_item| %>
+          <tr>
+            <td>
+              <%= image_tag cart_item.product.get_image, size: '100x80', class: 'img-fluid' %> %>
+              <%= cart_item.product.name %>
+            </td>
+            <td><%= cart_item.product.add_tax_price.to_s(:delimited) %></td>
+            <td>
+              <%= form_with model: cart_item do |f| %>
+                <%= f.select :amount, options_for_select((1..100).to_a), include_blank: "個数選択" %>
+                <%= f.submit '変更', class: 'btn btn-sm btn-success' %>
+              <% end %>
+            </td>
+            <td><%= cart_item.subtotal %></td>
+            <td></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+ 
+
+  <% else %>
+    <h1>現在カートに商品はありません。</h1>
+  <% end %>
+</div>
