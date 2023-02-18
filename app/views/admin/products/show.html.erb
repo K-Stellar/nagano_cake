@@ -1,2 +1,32 @@
-<h1>Admin::Products#show</h1>
-<p>Find me in app/views/admin/products/show.html.erb</p>
+<div class="container">
+  <div class="row mt-5">
+    <h4 class="mb-5 ml-5">商品詳細</h4>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <%= image_tag @product.get_image, size: '300x200' %>
+    </div>
+    <div class="col-md-8">
+      <div class="form-group row">
+        <p class="col-3">商品名</p>
+        <p class="col-8"><%= @product.name %></p>
+      </div>
+      <div class="form-group row">
+        <p class="col-3">商品説明</p>
+        <p class="col-8"><%= @product.information %></p>
+      </div>
+      <div class="form-group row">
+        <p class="col-3">ジャンル</p>
+        <p class="col-8"><%= @product.genre.name %></p>
+      </div>
+      <div class="form-group row">
+        <p class="col-3">税込価格<br>(税抜価格)</p>
+        <p class="col-8"><%= @product.add_tax_price.to_s(:delimited) %>（<%= @product.price.to_s(:delimited) %>）円</p>
+      </div>
+      <div class="form-group row">
+        <p class="col-3">販売ステータス</p>
+        <p class="col-8"><%= @product.is_active ? '販売中' : '販売停止中' %></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,11 +9,12 @@ class Admin::ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
   end
 
   def edit
   end
-  
+
   def create
     @product=Product.new(product_params)
     if @product.save
@@ -22,9 +23,9 @@ class Admin::ProductsController < ApplicationController
       render 'index'
     end
   end
-  
+
   private
-  
+
   def product_params
     params.require(:product).permit(:name, :information, :image, :genre_id, :price, :is_active)
   end
