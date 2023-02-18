@@ -1,0 +1,13 @@
+<div class="d-flex align-content-start flex-wrap py-3">
+  <% products.each do |product| %>
+  <div class='col-3 my-5'>
+    <%= image_tag product.get_image, size:'150x100', class:'col-12 rounded' %>
+    <span><%= product.name %></span><br>
+    <span>¥<%= product.price %></span>
+  </div>
+  <% end %>
+</div>
+
+
+
+
