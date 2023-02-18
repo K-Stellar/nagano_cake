@@ -6,7 +6,10 @@
     </div>
     <div class='col-md-8 offset-md-1'>
       <div class='border-bottom form-group row form-inline'><h3>商品一覧</h3><span>(全<%= @products.count %>件)</span></div>
-      <%= render 'index'%>
+      <%= render 'index', products: @products%>
+      <div class="row justify-content-center">
+        <%= paginate @products %>
+      </div>
     </div>
   </div>
 </div>
