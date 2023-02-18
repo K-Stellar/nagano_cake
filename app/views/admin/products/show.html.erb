@@ -1,2 +1,9 @@
-<h1>Admin::Products#show</h1>
-<p>Find me in app/views/admin/products/show.html.erb</p>
+<div>
+  <h5>商品詳細</h5>
+  <%= image_tag @product.get_image, size: '300x200' %>
+  <p>商品名</p><%= @product.name %>
+  <p>商品説明</p><%= @product.information %>
+  <p>ジャンル</p><%= @product.genre.name %>
+  <p>税込価格</p><%= @product.add_tax_price.to_s(:dalimited) %>(<%= @product.price %>)円
+  <p>販売ステータス</p><%= @product.is_active ? '販売中' : '販売停止中' %>
+</div>
