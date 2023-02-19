@@ -8,10 +8,9 @@
     </div>
   </div>
 
-  <% if @cart_items.present? %>
-
+  <% if current_customer.cart_items.present? %>
     <div class="row">
-      <table>
+      <table class="table">
         <thead>
           <th>商品名</th>
           <th>単価(税込)</th>
@@ -20,20 +19,20 @@
           <th></th>
         </thead>
         <tbody>
-        <% @cart_item.each do |cart_item| %>
+        <% @cart_items.each do |cart_item| %>
           <tr>
             <td>
-              <%= image_tag cart_item.product.get_image, size: '100x80', class: 'img-fluid' %> %>
+              <%= image_tag cart_item.product.get_image, size: '100x80', class: 'img-fluid' %>
               <%= cart_item.product.name %>
             </td>
             <td><%= cart_item.product.add_tax_price.to_s(:delimited) %></td>
             <td>
               <%= form_with model: cart_item do |f| %>
-                <%= f.select :amount, options_for_select((1..100).to_a), include_blank: "個数選択" %>
+                <%= f.select :amount, *[1..100], include_blank: "cart_item.amount" %>
                 <%= f.submit '変更', class: 'btn btn-sm btn-success' %>
               <% end %>
             </td>
-            <td><%= cart_item.subtotal %></td>
+            <td><%= cart_item.subtotal.to_s(:delimited) %></td>
             <td></td>
           </tr>
         <% end %>

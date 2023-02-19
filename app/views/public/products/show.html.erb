@@ -24,11 +24,12 @@
         <% if (customer_signed_in?) && (@product.is_active == true) %>
           <%= form_with model: @cart_item do |f| %>
             <%= f.hidden_field :product_id, value: @product.id %>
-            <%= f.select :amount, (1..100).to_a.map{|n| [n, n]}, include_blank: "個数選択" %>
+            <%= f.select :amount, (1..100).to_a.select{|n| [n, n]}, include_blank: "個数選択" %>
+            <!--%= f.select :amount, *[1..100] %>-->
             <%= f.submit 'カートに入れる', class: 'btn btn-sm btn-success' %>
           <% end %>
         <% elsif @product.is_active != true %>
-          <span class="btn btn-danger">売切れ</span>
+          <span class="btn btn-danger disabled">売切れ</span>
         <% end %>
         </div>
       </div>
