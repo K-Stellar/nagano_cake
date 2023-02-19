@@ -34,28 +34,6 @@
           <%= f.submit "変更を保存", class: "btn btn-success btn-lg" %>
         </div>
         <%end%>
-        <!--確認用（後程削除）-->
-        <table class="table table-hover table-inverse">
-          <thead>
-            <th>名前</th>
-            <th>画像</th>
-            <th>説明</th>
-            <th>ジャンル</th>
-            <th>値段</th>
-            <th>ステータス</th>
-          </thead>
-          <% @products.each do |product| %>
-            <tbody>
-                <td><%= product.name %></td>
-                <td><%= image_tag product.get_image, size:'400x200' %></td>
-                <td><%= product.information %></td>
-                <td><%= product.genre.name %></td>
-                <td><%= product.price %>円</td>
-                <td><%= product.is_active ? '販売中' : '売り切れ' %></td>
-            </tbody>
-          <%end%>
-        </table>
-        <!--ここまで確認用-->
     </div>
   </div>
 </div>
