@@ -10,14 +10,12 @@ class Public::CartItemsController < ApplicationController
     if @cart_item.save
       redirect_to cart_items_path(@cart_item.id)
     else
-      redirect_to cart_items_path(@cart_item.id), notice: "追加に失敗しました"
+      redirect_to request.referer
     end
   end
-
+  
+  
   def destroy_all
-    @cart_items = CartItem.all
-    @cart_items.destroy_all
-    redirect_to request.referer
   end
 
   private
