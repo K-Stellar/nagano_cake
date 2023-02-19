@@ -10,7 +10,7 @@ class Public::CartItemsController < ApplicationController
     if @cart_item.save
       redirect_to cart_items_path(@cart_item.id)
     else
-      redirect_to request.referer
+      redirect_to cart_items_path(@cart_item.id), notice: "追加に失敗しました"
     end
   end
 
@@ -23,7 +23,7 @@ class Public::CartItemsController < ApplicationController
   private
 
   def cart_item_params
-    params.require(:cart_item).permit(:product_id, :amount)
+    params.require(:cart_item).permit(:product_id, :price, :amount)
   end
 
 end

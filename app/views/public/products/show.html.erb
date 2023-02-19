@@ -21,11 +21,15 @@
       <div class='row px-3 mt-3'>
         <div class='col-md-5'></div>
         <div class='col-md-7 px-3'>
-          <%= form_with model: @cart_item do |f| %>
-            <%= f.hidden_field :product_id, value: @product.id %>
-            <!--%= f.select :amount, options_for_select((1..100).to_a), include_blank: "個数選択" %>-->
-            <%= f.select :amount, (1..100).to_a.map{|n| [n, n]}, include_blank: "個数選択" %>
-            <%= f.submit 'カートに入れる', class: 'btn btn-sm btn-success' %>
+          <% if (customer_signed_in?) && (@product.is_active == true) %>
+            <%= form_with model: @cart_item do |f| %>
+              <%= f.hidden_field :product_id, value: @product.id %>
+              <!--%= f.select :amount, options_for_select((1..100).to_a), include_blank: "個数選択" %>-->
+              <%= f.select :amount, (1..100).to_a.map{|n| [n, n]}, include_blank: "個数選択" %>
+              <%= f.submit 'カートに入れる', class: 'btn btn-sm btn-success' %>
+            <% end %>
+          <% elsif @product.is_active != true %>
+            <span class="btn btn-danger">売切れ</span>
           <% end %>
         </div>
       </div>
