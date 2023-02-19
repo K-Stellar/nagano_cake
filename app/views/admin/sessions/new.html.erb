@@ -1,29 +1,25 @@
-
 <div class="container">
   <div class="row">
-    <div class="col">
-      <h5><span class="form-group form-inline">管理者ログイン</span></h5>
-
-      <%= form_with model: @admin, url: session_path(resource_name), local: true, class: "container" do |f| %>
-        <div class="fofrm-group form-inline">
-          <%= f.label "メールアドレス", class: "col-4" %>
-          <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", class: "col-5 form-control" %>
+    <div class="col-md-8 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+      <h4 class="mb-5"><span class="text-dark bg-secondary">  管理者ログイン  </span></h4>
+      <div class="ml-3">
+        <div class="mb-5 px-3">
+          <%= form_with model: @admin, url: session_path(resource_name), local: true do |f| %>
+            <div class="form-group row">
+              <%= f.label "メールアドレス", class: "col-3 px-0 mx-auto" %>
+              <%= f.email_field :email, autofocus: true, placeholder: "sample@example.com", class: "col-7 mx-auto" %>
+            </div>
+            <div class="form-group row">
+              <%= f.label "パスワード", class: "col-3 px-0 mx-auto" %>
+              <%= f.password_field :password, autocomplete: "current-password", class: "col-7 mx-auto" %>
+            </div>
+            <div class="form-group row">
+              <span class="col-5"></span>
+              <%= f.submit "ログイン", class: "btn btn-sm btn-primary" %>
+            </div>
+          <% end %>
         </div>
-
-        <div class="fofrm-group form-inline">
-          <%= f.label "パスワード", class: "col-4" %>
-          <%= f.password_field :password, autocomplete: "current-password", class: "col-5 form-control" %>
-        </div>
-
-
-
-        <div class="row">
-          <div class="mx-auto">
-            <%= f.submit "ログイン" %>
-          </div>
-        </div>
-      <% end %>
-
+      </div>
     </div>
   </div>
 </div>
