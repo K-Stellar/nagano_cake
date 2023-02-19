@@ -1,5 +1,4 @@
-/*フッター固定*/
-html, body { height: 100%;}
+/*フッター固定*/html, body { height: 100%;}
 
 body > footer {
   position: sticky;
