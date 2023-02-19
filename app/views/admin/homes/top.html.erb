@@ -1,2 +1,8 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<h4>注文一覧</h4>
+
+<%= @orders.each do |order| %>
+  
+  <p>購入日時</p>
+  <%= ordeer.created_at %>
+  
+<% end %>
