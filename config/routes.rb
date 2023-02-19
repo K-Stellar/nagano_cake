@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resource :customers, only: [:show, :edit, :update] do
       get :check, on: :collection
       get :withdrowl, on: :collection
-      resource :addresses, only: [:index, :edit, :create, :update, :destroy]
+      resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     end
     resources :cart_items, only: [:index, :update, :destroy, :create] do
       delete :destroy_all, on: :collection
