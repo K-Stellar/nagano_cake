@@ -4,23 +4,23 @@
         <h3><span class="bg-light bg-gradient">商品新規登録</span></h3>
         <%= form_with model: @product, url: admin_products_path, local:true, class: "container text-center pl-9" do |f| %>
         <div class="form-group row">
-          <label class="col-4 text-right">商品画像</label>
+          <%= f.label :image, "商品画像", class: "col-4 text-right" %>
           <%= f.file_field :image, class: "col-4 form-control-file pl-0", accept: "image/*" %>
         </div>
         <div class="form-group row">
-          <label class="col-4 text-right">商品名</label>
+          <%= f.label :name, "商品名", class: "col-4 text-right" %>
           <%= f.text_field :name, class: "col-4 form-control name", placeholder: "商品名" %>
         </div>
         <div class="form-group row">
-          <label class="col-4 text-right">商品説明</label>
+          <%= f.label :information, "商品説明", class: "col-4 text-right" %>
           <%= f.text_area :information, class: "col-4 form-control information", placeholder: "ここに説明文を記述します" %>
         </div>
         <div class="form-group row">
-          <label class="col-4 text-right">ジャンル</label>
+          <%= f.label :genre_id, "ジャンル", class: "col-4 text-right" %>
           <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %>
         </div>
         <div class="form-group row">
-          <label class="col-4 text-right">税抜価格</label>
+          <%= f.label :price, "税抜価格", class: "col-4 text-right" %>
           <%= f.text_field :price, class: "col-4 form-control price", placeholder: "1000" %>円
         </div>
         <div class="form-group row">
@@ -40,6 +40,7 @@
             <th>名前</th>
             <th>画像</th>
             <th>説明</th>
+            <th>ジャンル</th>
             <th>値段</th>
             <th>ステータス</th>
           </thead>
@@ -48,6 +49,7 @@
                 <td><%= product.name %></td>
                 <td><%= image_tag product.get_image, size:'400x200' %></td>
                 <td><%= product.information %></td>
+                <td><%= product.genre.name %></td>
                 <td><%= product.price %>円</td>
                 <td><%= product.is_active ? '販売中' : '販売中止中' %></td>
             </tbody>
