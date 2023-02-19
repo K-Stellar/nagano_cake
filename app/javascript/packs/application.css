@@ -18,3 +18,11 @@ body > footer {
     border-color: #c45500 !important;
   }
 /*ページネーションデザイン修正*/
+
+/*homestopの背景画像*/
+.cakeimg1 {
+  height: 300px;
+  width: 80%;
+  background-image:url(../../assets/images/cake.jpg);
+  background-size: 100%100%;
+}
