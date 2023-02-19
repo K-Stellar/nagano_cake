@@ -2,7 +2,6 @@ class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
 
   def index
-    # @cart_items = CartItem.all
     @cart_items = current_customer.cart_items.all
   end
 
@@ -20,9 +19,26 @@ class Public::CartItemsController < ApplicationController
       redirect_to request.referer
     end
   end
+
+  def update
+    @cart_item = current_customer.cart_items.find(params[:id])
+    if @cart_item.update(cart_item_params)
+      redirect_to request.referer
+    else
+      redirect_to products_path
+    end
+  end
   
-  
+  def destroy
+    @cart_item = current_customer.cart_items.find(params[:id])
+    @cart_item.destroy
+    redirect_to request.referer
+  end
+
   def destroy_all
+    @cart_items = current_customer.cart_items.all
+    @cart_items.destroy_all
+    redirect_to request.referer
   end
 
   private
