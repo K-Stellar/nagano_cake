@@ -1,31 +1,35 @@
-<div class='container my-5'>
-  <div class='row'>
-    <div class='col-md-2'>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-2">
       <h5>ジャンル検索</h5>
       <%= render 'genres' %>
     </div>
-    <div class='col-md-10'>
+    <div class="col-md-10">
       <div class="row">
-        <div class='col-5'>
-          <%= image_tag @product.get_image, size: '300x200', class: 'img-fluid' %>
+        <div class="col-5">
+          <%= image_tag @product.get_image, size: '400x300', class: 'img-fluid' %>
         </div>
-        <div class='col-7 px-3'>
+        <div class="col-7 px-3">
           <h2><strong><%= @product.name %></strong></h2>
-          <p class='my-3'><strong><%= @product.information %></strong></p>
-          <div class="align-bottom">
-            <soan class="h4">¥ <%= @product.add_tax_price.to_s(:delimited) %></span>
-            <span class="small">(税込)</span>
+          <p class="my-3"><strong><%= @product.information %></strong></p>
+          <div>
+            <span class="h4">¥ <%= @product.add_tax_price.to_s(:delimited) %></span>
+            <span class="h6">(税込)</span>
           </div>
         </div>
       </div>
-      <div class='row px-3 mt-3'>
-        <div class='col-md-5'></div>
-        <div class='col-md-7 px-3'>
+      <div class="row px-3 mt-3">
+        <div class="col-md-5"></div>
+        <div class="col-md-7">
+        <% if (customer_signed_in?) && (@product.is_active == true) %>
           <%= form_with model: @cart_item do |f| %>
             <%= f.hidden_field :product_id, value: @product.id %>
-            <%= f.select :amount, options_for_select((1..100).to_a), include_blank: "個数選択" %>
+            <%= f.select :amount, (1..100).to_a.map{|n| [n, n]}, include_blank: "個数選択" %>
             <%= f.submit 'カートに入れる', class: 'btn btn-sm btn-success' %>
           <% end %>
+        <% elsif @product.is_active != true %>
+          <span class="btn btn-danger">売切れ</span>
+        <% end %>
         </div>
       </div>
     </div>
