@@ -1,6 +1,20 @@
+/*フッター固定*/
 html, body { height: 100%;}
 
 body > footer {
   position: sticky;
   top: 100vh;
 }
+/*フッター固定*/
+
+
+/*ページネーションデザイン修正*/
+.pagination>li>a {
+  border: none;
+}
+
+.pagination>.active>a {
+    background-color: #c45500 !important;
+    border-color: #c45500 !important;
+  }
+/*ページネーションデザイン修正*/
