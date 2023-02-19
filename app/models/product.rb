@@ -10,7 +10,7 @@ class Product < ApplicationRecord
     (image.attached?) ? image : 'no_image.jpg'
   end
 
-  def include_tax_price
+  def add_tax_price
     (price*1.1).floor
   end
 

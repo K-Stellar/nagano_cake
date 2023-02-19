@@ -13,7 +13,7 @@
           <h2><strong><%= @product.name %></strong></h2>
           <p class="my-3"><strong><%= @product.information %></strong></p>
           <div>
-            <soan class="h4">¥ <%= @product.include_tax_price.to_s(:delimited) %></span>
+            <soan class="h4">¥ <%= @product.add_tax_price.to_s(:delimited) %></span>
             <span class="h6">(税込)</span>
           </div>
         </div>
@@ -24,7 +24,8 @@
         <% if (customer_signed_in?) && (@product.is_active == true) %>
           <%= form_with model: @cart_item do |f| %>
             <%= f.hidden_field :product_id, value: @product.id %>
-            <%= f.select :amount, options_for_select((1..100).to_a), include_blank: "個数選択" %>
+            <%= f.select :amount, (1..100).to_a.map{|n| [n, n]}, include_blank: "個数選択" %>
+            <!--%= f.select :age, (0..100).to_a.map{|n| [n, n]} %>-->
             <%= f.submit 'カートに入れる', class: 'btn btn-sm btn-success' %>
           <% end %>
         <% elsif @product.is_active != true %>
