@@ -1,4 +1,4 @@
-<div class="d-flex align-content-start row flex-wrap">
+<div class="d-flex align-content-start row flex-wrap py-2">
   <% products.each do |product| %>
   <div class='col-lg-3 col-md-5 col-sm-6 my-5'>
     <%= link_to product_path(product.id) do %>
@@ -9,22 +9,3 @@
   </div>
   <% end %>
 </div>
-
-
-
-
-<div class="d-flex align-content-start row flex-wrap">
-  <% products.each do |product| %>
-  <div class='col-lg-3 col-md-5 col-sm-6 my-5'>
-    <%= link_to product_path(product.id) do %>
-      <%= image_tag product.get_image, size:'150x100', class:'rounded shadow' %>
-      <div class="row"><span class="text-secondary mt-3"><strong><%= product.name %></strong></span></div>
-      <div class="row"><span class="text-secondary mt-1"><strong>¥<%= product.add_tax_price.to_s(:delimited) %></strong></span></div>
-    <% end %>
-  </div>
-  <% end %>
-</div>
-
-
-
-
