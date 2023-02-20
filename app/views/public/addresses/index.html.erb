@@ -2,8 +2,9 @@
   <div class="row">
     <div class="col-10">
       <h3 class="mb-5"><span class="bg-light bg-gradient">配送先登録／一覧</span></h3>
+      <%= render "public/shared/error_messages", resource: @address %>
+      <%= form_with model: @address, url: customers_addresses_path, local:true do |f| %>
       <table class="table table-borderless">
-        <%= form_with model: @address, url: customers_addresses_path, local:true do |f| %>
         <tr>
           <td class="w-25"><%= f.label :postal_code, "郵便番号（ハイフンなし）" %></td>
           <td><%= f.text_field :postal_code, placeholder: "0000000" %></td>
@@ -15,10 +16,10 @@
         <tr>
           <td class="w-25"><%= f.label :name, "宛名" %></td>
           <td><%= f.text_field :name, placeholder: "令和道子" %></td>
-          <td><%= f.submit "新規登録", class: "btn btn-success" %></td>
         </tr>
-        <%end%>
       </table>
+      <%= f.submit "新規登録", class: "btn btn-success" %>
+      <%end%>
       <table class="table table-bordered">
         <thead>
           <th>郵便番号</th>

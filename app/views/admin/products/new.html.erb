@@ -2,29 +2,34 @@
   <div class="row">
     <div class="col">
         <h3><span class="bg-light bg-gradient">商品新規登録</span></h3>
-        <%= form_with model: @product, url: admin_products_path, local:true, class: "container text-center pl-9" do |f| %>
-        <div class="form-group row">
-          <%= f.label :image, "商品画像", class: "col-4 text-right" %>
-          <%= f.file_field :image, class: "col-4 form-control-file pl-0", accept: "image/*" %>
+        <%= form_with model: @product, url: admin_products_path, method: :post, local:true do |f| %>
+        <% flash.each do |message_type, messages| %>
+          <% messages.each do |message| %>
+            <div class="alert alert-<%= message_type %>"><%= message %></div>
+          <%end%>
+        <%end%>
+        <div class="form-group">
+          <%= f.label :image, "商品画像", class: "text-right" %>
+          <%= f.file_field :image, class: "form-control-file pl-0", accept: "image/*" %>
         </div>
-        <div class="form-group row">
-          <%= f.label :name, "商品名", class: "col-4 text-right" %>
-          <%= f.text_field :name, class: "col-4 form-control name", placeholder: "商品名" %>
+        <div class="form-group">
+          <%= f.label :name, "商品名", class: "text-right" %>
+          <%= f.text_field :name, class: "form-control name", placeholder: "商品名" %>
         </div>
-        <div class="form-group row">
-          <%= f.label :information, "商品説明", class: "col-4 text-right" %>
-          <%= f.text_area :information, class: "col-4 form-control information", placeholder: "ここに説明文を記述します" %>
+        <div class="form-group">
+          <%= f.label :information, "商品説明", class: "text-right" %>
+          <%= f.text_area :information, class: "form-control information", placeholder: "ここに説明文を記述します" %>
         </div>
-        <div class="form-group row">
-          <%= f.label :genre_id, "ジャンル", class: "col-4 text-right" %>
+        <div class="form-group">
+          <%= f.label :genre_id, "ジャンル", class: "text-right" %>
           <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "--選択してください--" %>
         </div>
-        <div class="form-group row">
-          <%= f.label :price, "税抜価格", class: "col-4 text-right" %>
-          <%= f.text_field :price, class: "col-4 form-control price", placeholder: "1000" %>円
+        <div class="form-group">
+          <%= f.label :price, "税抜価格", class: "text-right" %>
+          <%= f.text_field :price, class: "form-control price", placeholder: "1000" %>円
         </div>
-        <div class="form-group row">
-          <label class="col-4 text-right">販売ステータス</label>
+        <div class="form-group">
+          <label class="text-right">販売ステータス</label>
           <%= f.radio_button :is_active, :true %>
           <%= f.label :is_active, "販売中", value: "true", class: "mr-5" %>
           <%= f.radio_button :is_active, :false %>
