@@ -1,2 +1,65 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<div class='container shadow-lg'>
+  <div class='row'>
+    <div class="col-lg-6 col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+
+      <h3 class="mb-5 border-bottom">注文情報入力</h3>
+
+      <div  class='row pb-3'>
+        <h4 class="col-3">支払方法</h4>
+      </div>
+
+      <%= form_with model: @order, url: new_order_path do |f| %>
+
+        <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+        <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+
+        <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+        <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+
+        <div  class='row pb-3'>
+          <h4 class="col-3">お届先</h4>
+        </div>
+
+        <div  class='row pb-3'>
+          <%= f.radio_button :address_option, Address.address_options.key(0) %>
+          <%= f.label :address_option_current_address, Address.address_options_i18n[:current_address] %>
+        </div>
+
+        <div  class='row pb-3'>
+          <%= current_customer.address %>
+        </div>
+
+        <div  class='row pb-3'>
+          <%= f.radio_button :address_option, Address.address_options.key(1) %>
+          <%= f.label :address_option_other_address, Address.address_options_i18n[:other_address] %>
+        </div>
+
+        <div  class='row pb-3'>
+          <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display), class:"col-12" %>
+        </div>
+
+        <div  class='form-group row'>
+          <%= f.radio_button :address_option, Address.address_options.key(2) %>
+          <%= f.label :address_option_new_address, Address.address_options_i18n[:new_address],class:"pl-2 h4" %>
+        </div>
+
+        <div class="form-group row">
+            <%= f.label :postal_code, '郵便番号(ハイフンなし)', class:'col-4'%>
+            <%= f.text_field :postal_code, placeholder: "000000", autocomplete: "postal_code", class:'col-3' %>
+        </div>
+
+        <div class="form-group row">
+            <%= f.label :address, '住所', class:'col-4' %>
+            <%= f.text_field :address, placeholder: "長野県菓市美味町1-2-3", autocomplete: "address", class:'col-8' %>
+        </div>
+
+        <div class="form-group row my-3">
+            <%= f.label :name, '宛名', class:'col-4' %>
+            <%= f.text_field :name, placeholder: "長野景子", autocomplete: "name", class: "col-3" %>
+        </div>
+
+
+      <% end %>
+    </div>
+  </div>
+</div>
