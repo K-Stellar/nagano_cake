@@ -9,7 +9,7 @@
           <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class:'btn btn-outline-danger' %>
         </div>
       </div>
-    
+
       <% if current_customer.cart_items.present? %>
         <div class="row">
           <table class="table table-bordered">
