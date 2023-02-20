@@ -14,6 +14,4 @@ class Customer < ApplicationRecord
     self.last_name + self.first_name
   end
 
-  has_many :cart_items, dependent: :destroy
-
 end
