@@ -8,6 +8,14 @@ class Public::CustomersController < ApplicationController
   def check
   end
 
+  def withdrawal
+    @customer = current_customer
+    @customer.update(is_deleted: true)
+    reset_session
+    flash[:thank_you] = "ご利用ありがとうございました"
+    redirect_to root_path
+  end
+
 
 
 
