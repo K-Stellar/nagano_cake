@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show]
     resource :customers, only: [:show, :edit, :update] do
       get :check, on: :collection
-      get :withdrowl, on: :collection
+      patch :withdrawal, on: :collection
       resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     end
     resources :cart_items, only: [:index, :update, :destroy, :create] do
