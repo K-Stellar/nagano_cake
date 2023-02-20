@@ -8,7 +8,6 @@ class Public::OrdersController < ApplicationController
   def check
 
    @order = Order.new(order_params)
-   binding.irb
    if params[:order]["address_option"] == "0"
      @order.postal_code = current_customer.postal_code
      @order.address = current_customer.address
