@@ -8,16 +8,16 @@ class Public::CartItemsController < ApplicationController
 
   def create
     @cart_item = current_customer.cart_items.new(cart_item_params)
-    if current_customer.cart_items.find_by(product_id: params[:cart_item][:product_id]).present?
-      cart_item = current_customer.cart_items.find_by(product_id: params[:cart_item][:product_id])
+    cart_item = current_customer.cart_items.find_by(product_id: params[:cart_item][:product_id]) #追加した商品と同じ商品
+    if @cart_item.amount.blank?
+      redirect_to request.referer
+    elsif cart_item.present?  #同じ商品がカート内にある場合
       cart_item.amount += params[:cart_item][:amount].to_i
       cart_item.save
       redirect_to cart_items_path(@cart_item.id)
-    elsif
+    else
       @cart_item.save
       redirect_to cart_items_path(@cart_item.id)
-    else
-      redirect_to request.referer
     end
   end
 
