@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       delete :destroy_all, on: :collection
     end
     resources :orders, only: [:new, :create, :index, :show] do
-      post :check, on: :member
+      post :check, on: :collection
       get :complete, on: :collection
     end
   end
