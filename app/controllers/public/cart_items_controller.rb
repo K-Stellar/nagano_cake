@@ -29,7 +29,7 @@ class Public::CartItemsController < ApplicationController
       redirect_to products_path
     end
   end
-  
+
   def destroy
     @cart_item = current_customer.cart_items.find(params[:id])
     @cart_item.destroy
