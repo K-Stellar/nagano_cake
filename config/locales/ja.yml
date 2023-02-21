@@ -1,8 +1,6 @@
 ja:
   enums:
-    admin:
-      email:
-        email: "メールアドレス"
-    customer:
-      email:
-        email: "メールアドレス"
+    order:
+      payment_method:
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"

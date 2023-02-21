@@ -9,7 +9,7 @@
           <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class:'btn btn-outline-danger' %>
         </div>
       </div>
-    
+
       <% if current_customer.cart_items.present? %>
         <div class="row">
           <table class="table table-bordered">
@@ -24,7 +24,7 @@
             <% @cart_items.each do |cart_item| %>
               <tr>
                 <td>
-                  <%= image_tag cart_item.product.get_image, size: '50x30', class: 'img-fluid' %>
+                  <%= image_tag cart_item.product.get_image, size: '50x30', class: 'img-fluid mr-3' %>
                   <%= cart_item.product.name %>
                 </td>
                 <td class="text-right pr-3">

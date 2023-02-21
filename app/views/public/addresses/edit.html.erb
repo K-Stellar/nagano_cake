@@ -1,2 +1,35 @@
-<h1>Addresses#edit</h1>
-<p>Find me in app/views/addresses/edit.html.erb</p>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-10">
+      <h3 class="mb-5"><span class="bg-light bg-gradient">配送先編集</span></h3>
+        <% flash.each do |message_type, messages| %>
+          <% messages.each do |message| %>
+            <div class="alert alert-<%= message_type %>"><%= message %></div>
+          <%end%>
+        <%end%>
+        <%= form_with model: @address, url: customers_address_path, method: :patch, local:true do |f| %>
+          <div class="row">
+            <div class="col-4">
+              <ul class="list-unstyled">
+                <li><%= f.label :postal_code, "郵便番号（ハイフンなし）" %></li>
+                <li class="mt-3"><%= f.label :address, "住所" %></li>
+                <li class="mt-3"><%= f.label :name, "宛名" %></li>
+              </ul>
+            </div>
+          
+            <div class="col-5">
+              <ul class="list-unstyled">
+                <li><%= f.text_field :postal_code %></li>
+                <li class="mt-3"><%= f.text_field :address, class: "w-100" %></li>
+                <li class="mt-3"><%= f.text_field :name %></li>
+              </ul>
+            </div>
+          
+          <div class="form-group col-3 d-flex align-items-end">
+            <%= f.submit "変更内容を保存", class: "btn btn-success" %>
+          </div>
+        </div>
+        <%end%>
+    </div>
+  </div>
+</div>
