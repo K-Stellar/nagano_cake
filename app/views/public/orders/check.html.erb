@@ -56,7 +56,7 @@
 
         <div class="col-7">
           <span class="h4 row">支払方法</span>
-          <%= %>
+          <%= Order.find_by(payment_method:'').payment_method%>
 
           <span class="h4 row">お届先</span>
           <%= @order.postal_code %> <%= @order.address %>
