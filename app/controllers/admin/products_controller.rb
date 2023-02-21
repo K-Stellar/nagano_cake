@@ -17,10 +17,12 @@ class Admin::ProductsController < ApplicationController
 
   def create
     @product=Product.new(product_params)
+    @product
     if @product.save
       redirect_to admin_product_path(@product.id)
     else
-      render 'index'
+      flash[:danger]=@product.errors.full_messages
+      redirect_to new_admin_product_path
     end
   end
 
@@ -29,7 +31,7 @@ class Admin::ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to admin_product_path(@product.id)
     else
-      render 'index'
+      render 'edit'
     end
   end
 
