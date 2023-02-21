@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col">
       <h3><span class="bg-light bg-gradient">注文履歴詳細</span></h3>
-      <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local:true do |f| %> <!--相性の問題でテーブルタグの外にステータス更新formを設置-->
       <table class="table table-borderless">
         <tbody>
           <tr>
@@ -23,39 +22,41 @@
           </tr>
           <tr>
             <td class="w-25">注文ステータス</td>
-            <td><%= f.select :status, </td>
-          </tr>
-        </tbody>
-      </table>
-      <%end%>
-      
-      <table class="table table-borderless border-top mt-3">
-      <thead class="bg-light">
-        <th class="border-top">商品ID</th>
-        <th>商品名</th>
-        <th>税抜価格</th>
-        <th>ジャンル</th>
-        <th>ステータス</th>
-      </thead>
-      <tbody>
-        <% @products.each do |product| %>
-          <tr>
-            <td><%= product.id %></td>
-            <td><%= link_to product.name, admin_product_path(product.id), class: "text-dark border-bottom border-dark" %></td>
-            <td><%= product.price.to_s(:delimited) %></td>
-            <td><%= product.genre.name %></td>
             <td>
-              <!--販売中と販売停止中で色を変えなければならないため、条件分岐で表示-->
-              <% if product.is_active == true %>
-                <strong class="text-success">販売中</strong>
-              <% else %>
-                <strong class="text-muted">販売停止中</strong>
+              <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local:true do |f| %> 
+                <%= f.select :status, Order.all, :status, :status %>
+                <%= f.submit "更新", class: "btn btn-success ml-3" %>
               <%end%>
             </td>
           </tr>
-        <%end%>
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+      
+      <table class="table table-borderless border-top mt-3">
+         <thead class="bg-light">
+           <th class="border-top">商品ID</th>
+            <th>商品名</th>
+           <th>単価（税込）</th>
+            <th>数量</th>
+          <th>制作ステータス</th>
+        </thead>
+      <tbody>
+          <% @order_products.each do |order_product| %>
+            <tr>
+              <td><%= order_product.product.name %></td>
+              <td><%= order_product.price.to_s(:delimited) %></td>
+              <td><%= order_product.amount %></td>
+              <td></td>
+              <td>
+              <%= form_with model: order_product, url: admin_order_product_path(order_product.id), method: :patch, local:true do |f| %> 
+                <%= f.select :product_status, OrderProduct.all, :making_status, :product_status %>
+                <%= f.submit "更新", class: "btn btn-success ml-3" %>
+              <%end%>
+              </td>
+            </tr>
+          <%end%>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
