@@ -1,9 +1,9 @@
 <div class="container my-5">
   <div class="row">
     <div class="col-lg-11 col-sm-12 mx-auto">
-      <div class="row mb-3">
+      <div class="row mb-4">
         <div class="col-7">
-          <h4><span>　ショッピングカート　</span></h4>
+          <span class="h3">注文情報確認</span>
         </div>
       </div>
 
@@ -20,7 +20,7 @@
             <% @cart_items.each do |cart_item| %>
               <tr>
                 <td>
-                  <%= image_tag cart_item.product.get_image, size: '50x30', class: 'img-fluid' %>
+                  <%= image_tag cart_item.product.get_image, size: '50x30', class: 'img-fluid mr-3' %>
                   <%= cart_item.product.name %>
                 </td>
                 <td class="text-right pr-3">
@@ -54,14 +54,21 @@
           </table>
         </div>
 
-        <div class="col-7">
-          <span class="h4 row">支払方法</span>
-          <%= Order.find_by(payment_method:'').payment_method%>
-
-          <span class="h4 row">お届先</span>
-          <%= @order.postal_code %> <%= @order.address %>
-          <%= @order.name %>
+        <div class="row mt-3">
+          <dt class="col-2"><span class="h4">支払方法</span></dt>
+          <dd class="my-auto col-8"><span class="h6"><%= Order.payment_methods_i18n[@order.payment_method] %></span></dd>
         </div>
+
+        <div class="row mt-5">
+          <dt class="col-2"><span class="h4">お届先</span></dt>
+          <dd class="col-8 my-auto"><span class="h6">〒<%= @order.postal_code %> <%= @order.address %></span></dd>
+        </div>
+        <div class="row">
+          <div class="col-2"></div>
+          <span class="col-8 h6"><%= @order.name %></span>
+        </div>
+
+        <div class="row justify-content-center my-5 pt-3"><%= link_to "注文を確定する", complete_orders_path, class:"btn btn-info btn-lg col-3" %></div>
       <% else %>
         <h1>現在カートに商品はありません。</h1>
       <% end %>
