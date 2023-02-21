@@ -2,52 +2,32 @@
   <div class="row">
     <div class="col">
       <h3><span class="bg-light bg-gradient">注文履歴詳細</span></h3>
+      <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local:true do |f| %> <!--相性の問題でテーブルタグの外にステータス更新formを設置-->
       <table class="table table-borderless">
         <tbody>
           <tr>
-            <td class="w-25"><strong>購入者</strong></td>
+            <td class="w-25"><strong class="border-bottom">購入者</strong></td>
             <td><%= @order.customer.full_name %></td>
           </tr>
           <tr>
-            <td class="w-25">氏名</td>
-            <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
+            <td class="w-25">注文日</td>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
           <tr>
-            <td class="w-25">フリガナ</td>
-            <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
+            <td class="w-25">配送先</td>
+            <td><%= @order.address %></td>
           </tr>
           <tr>
-            <td class="w-25">郵便番号</td>
-            <td><%= @customer.postal_code %></td>
+            <td class="w-25">支払方法</td>
+            <td><%= @order.payment_type %></td>
           </tr>
           <tr>
-            <td class="w-25">住所</td>
-            <td><%= @customer.address %></td>
-          </tr>
-          <tr>
-            <td class="w-25">電話番号</td>
-            <td><%= @customer.phone_num %></td>
-          </tr>
-          <tr>
-            <td class="w-25">メールアドレス</td>
-            <td><%= @customer.email %></td>
-          </tr>
-          <tr>
-            <td class="w-25">会員ステータス</td>
-            <td>
-              <% if @customer.is_deleted == false %>
-                <strong class="text-success">有効</strong>
-              <% else %>
-                <strong class="text-denger">退会済み</strong>
-              <%end%>
-            </td>
+            <td class="w-25">注文ステータス</td>
+            <td><%= f.select :status, </td>
           </tr>
         </tbody>
       </table>
-      <div class="w-75 mx-auto">
-        <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-lg btn-success mr-5" %>
-        <%= link_to "注文履歴一覧を見る", admin_root_path, class: "btn btn-lg btn-primary" %>
-      </div>
+      <%end%>
       
       <table class="table table-borderless border-top mt-3">
       <thead class="bg-light">
