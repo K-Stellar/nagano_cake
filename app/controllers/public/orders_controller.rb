@@ -6,7 +6,6 @@ class Public::OrdersController < ApplicationController
   end
 
   def check
-
    @order = Order.new(order_params)
    if params[:order]["address_option"] == "0"
      @order.postal_code = current_customer.postal_code

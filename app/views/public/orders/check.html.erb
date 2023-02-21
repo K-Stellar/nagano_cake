@@ -48,7 +48,7 @@
                 </tr>
                 <tr>
                     <th scope="row" class='bg-light col-lg-4'>請求金額</th>
-                    <td class='col-lg-8 py-2'><%= %></td>
+                    <td class='col-lg-8 py-2'><%= (@total_price+800).to_s(:delimited) %></td>
                 </tr>
             </tbody>
           </table>
