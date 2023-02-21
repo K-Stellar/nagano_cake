@@ -24,15 +24,17 @@
                 <%= l order.created_at %>
               </td>
               <td>
-                <%= order.address %>
+                <%= order.postal_code %><br>
+                <%= order.address %><br>
+                <%= order.name %>
               </td>
               <td>
-                <% order.cart_items.each do |item| %>
-                  <%= item.name %><br>
+                <% order.order_products.each do |order_product| %>
+                  <%= order_product.product.name %><br>
                 <% end %>
               </td>
               <td>
-                <%= order.total_price.to_s(:delimited) %>
+                <%= order.total_payment %>
               </td>
               <td>
                 <%= order.status %>
