@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="row mt-5">
+<div class="container my-5">
+  <div class="row">
     <h4 class="mb-3 ml-5">会員一覧</h4>
   </div>
   <div class="row px-5">
@@ -16,11 +16,15 @@
       <% @customers.each do |customer| %>
         <tr>
           <td><%= customer.id %></td>
-          <td>
-            <%= link_to customer.full_name,admin_customer_path(customer.id) %>
-           </td>
+          <td><%= link_to customer.full_name,admin_customer_path(customer.id), class: "text-dark border-bottom border-dark" %></td>
           <td><%= customer.email %></td>
-          <td><%= customer.is_deleted ? '退会' : '有効' %></td>
+          <td>
+            <% if customer.is_deleted == false %>
+              <strong class="text-success">有効</strong>
+            <% else %>
+              <strong class="test-muted">退会</strong>
+            <% end %>
+          </td>
         </tr>
       <% end %>
       </tbody>
