@@ -13,7 +13,8 @@ class Public::AddressesController < ApplicationController
     if @address.update(address_params)
       redirect_to customers_addresses_path
     else
-      render 'edit'
+      flash[:danger]=@address.errors.full_messages
+      redirect_to request.referer
     end
   end
   
@@ -23,7 +24,7 @@ class Public::AddressesController < ApplicationController
     if @address.save
       redirect_to request.referer
     else
-      @addresses = Address.all
+      @addresses = Address.where(customer_id: current_customer.id)
       render 'index'
     end
   end
