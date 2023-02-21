@@ -28,8 +28,8 @@
 
         <div class='pl-3'>
           <div  class='form-check row my-3'>
-            <%= f.radio_button :address_option, Address.address_options.key(0) %>
-            <%= f.label :address_option_current_address, Address.address_options_i18n[:current_address], class:"pl-2 h5" %>
+            <%= f.radio_button :address_option, 0 %>
+            <%= f.label :address_option, "ご自身の住所", class:"pl-2 h5" %>
           </div>
 
           <div  class='row offset-1 pb-4'>
@@ -37,8 +37,8 @@
           </div>
 
           <div  class='form-check row my-3'>
-            <%= f.radio_button :address_option, Address.address_options.key(1) %>
-            <%= f.label :address_option_other_address, Address.address_options_i18n[:other_address], class:"pl-2 h5 col-6" %>
+            <%= f.radio_button :address_option, 1 %>
+            <%= f.label :address_option, "登録済住所から選択", class:"pl-2 h5 col-6" %>
           </div>
 
           <div  class='row offset-1 pb-4'>
@@ -46,8 +46,8 @@
           </div>
 
           <div  class='form-check row my-3'>
-            <%= f.radio_button :address_option, Address.address_options.key(2) %>
-            <%= f.label :address_option_new_address, Address.address_options_i18n[:new_address],class:"pl-2 h5" %>
+            <%= f.radio_button :address_option, 2 %>
+            <%= f.label :address_option,"新しいお届先", class:"pl-2 h5" %>
           </div>
 
           <div class="form-group row offset-1 my-3">
@@ -66,7 +66,7 @@
           </div>
         </div>
 
-        <div class="row justify-content-center my-5"><%= f.submit "確認画面へ進む", class:"btn btn-info btn-lg col-3" %></div>
+        <div class="row justify-content-center my-5 pt-4"><%= f.submit "確認画面へ進む", class:"btn btn-info btn-lg col-3" %></div>
 
       <% end %>
     </div>
