@@ -1,2 +1,74 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<div class='container shadow-lg'>
+  <div class='row'>
+    <div class="col-lg-7 col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+
+      <h3 class="mb-5 border-bottom">注文情報入力</h3>
+
+      <div  class='row pb-3'>
+        <h4 class="col-3">支払方法</h4>
+      </div>
+
+      <%= form_with model: @order, url: check_orders_path do |f| %>
+
+        <div class='pl-3 mb-4'>
+          <div  class='form-check row'>
+            <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+            <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+          </div>
+
+          <div  class='form-check row'>
+            <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+            <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+          </div>
+        </div>
+
+        <div  class='row mb-2'>
+          <h4 class="col-3">お届先</h4>
+        </div>
+
+        <div class='pl-3'>
+          <div  class='form-check row my-3'>
+            <%= f.radio_button :address_option, Address.address_options.key(0) %>
+            <%= f.label :address_option_current_address, Address.address_options_i18n[:current_address], class:"pl-2 h5" %>
+          </div>
+
+          <div  class='row offset-1 pb-4'>
+            <%= current_customer.address %>
+          </div>
+
+          <div  class='form-check row my-3'>
+            <%= f.radio_button :address_option, Address.address_options.key(1) %>
+            <%= f.label :address_option_other_address, Address.address_options_i18n[:other_address], class:"pl-2 h5 col-6" %>
+          </div>
+
+          <div  class='row offset-1 pb-4'>
+            <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+          </div>
+
+          <div  class='form-check row my-3'>
+            <%= f.radio_button :address_option, Address.address_options.key(2) %>
+            <%= f.label :address_option_new_address, Address.address_options_i18n[:new_address],class:"pl-2 h5" %>
+          </div>
+
+          <div class="form-group row offset-1 my-3">
+              <%= f.label :postal_code, '郵便番号(ハイフンなし)', class:'col-5'%>
+              <%= f.text_field :postal_code, placeholder: "000000", autocomplete: "postal_code", class:'col-4' %>
+          </div>
+
+          <div class="form-group row offset-1 my-3">
+              <%= f.label :address, '住所', class:'col-5' %>
+              <%= f.text_field :address, placeholder: "長野県菓市美味町1-2-3", autocomplete: "address", class:'col-7' %>
+          </div>
+
+          <div class="form-group row offset-1 my-3">
+              <%= f.label :name, '宛名', class:'col-5' %>
+              <%= f.text_field :name, placeholder: "長野景子", autocomplete: "name", class: "col-4" %>
+          </div>
+        </div>
+
+        <div class="row justify-content-center my-5"><%= f.submit "確認画面へ進む", class:"btn btn-info btn-lg col-3" %></div>
+
+      <% end %>
+    </div>
+  </div>
+</div>
