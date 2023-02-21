@@ -8,6 +8,8 @@
       </div>
 
       <% if current_customer.cart_items.present? %>
+
+      <%= form_with model: @order, url: orders_path do |f| %>
         <div class="row">
           <table class="table table-bordered col-7">
             <thead class="bg-light text-center">
@@ -41,6 +43,7 @@
                 <tr>
                     <th scope="row" class='bg-light col-lg-4'>送料</th>
                     <td class='col-lg-8 py-2'>800</td>
+                     <%= f.hidden_field :shipping_cost, :value => 800 %>
                 </tr>
                 <tr>
                     <th scope="row" class='bg-light col-lg-4'>商品合計</th>
@@ -49,6 +52,7 @@
                 <tr>
                     <th scope="row" class='bg-light col-lg-4'>請求金額</th>
                     <td class='col-lg-8 py-2'><%= (@total_price+800).to_s(:delimited) %></td>
+                    <%= f.hidden_field :total_payment, :value => @total_price+800 %>
                 </tr>
             </tbody>
           </table>
@@ -56,19 +60,26 @@
 
         <div class="row mt-3">
           <dt class="col-2"><span class="h4">支払方法</span></dt>
-          <dd class="my-auto col-8"><span class="h6"><%= Order.payment_methods_i18n[@order.payment_method] %></span></dd>
+          <dd class="my-auto col-8"><span class="h6"><%= Order.payment_types_i18n[@order.payment_type] %></span></dd>
+          <%= f.hidden_field :payment_type, :value => @order.payment_type %>
         </div>
 
         <div class="row mt-5">
           <dt class="col-2"><span class="h4">お届先</span></dt>
           <dd class="col-8 my-auto"><span class="h6">〒<%= @order.postal_code %> <%= @order.address %></span></dd>
+          <%= f.hidden_field :postal_code, :value => @order.postal_code %>
+          <%= f.hidden_field :address, :value => @order.address %>
         </div>
         <div class="row">
           <div class="col-2"></div>
           <span class="col-8 h6"><%= @order.name %></span>
+          <%= f.hidden_field :name, :value => @order.name %>
         </div>
 
-        <div class="row justify-content-center my-5 pt-3"><%= link_to "注文を確定する", complete_orders_path, class:"btn btn-info btn-lg col-3" %></div>
+        <div class="row justify-content-center my-5 pt-3"><%= f.submit "注文を確定する", class:"btn btn-info btn-lg col-3" %></div>
+
+        <%= f.hidden_field :title, :value => "楽しいRuby" %>
+      <% end %>
       <% else %>
         <h1>現在カートに商品はありません。</h1>
       <% end %>

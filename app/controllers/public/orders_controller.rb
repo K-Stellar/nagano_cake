@@ -10,7 +10,7 @@ class Public::OrdersController < ApplicationController
    if params[:order][:address_option] == "0"
      @order.postal_code = current_customer.postal_code
      @order.address = current_customer.address
-     @order.name = current_customer.current_customer.last_name + first_name
+     @order.name = current_customer.last_name + current_customer.first_name
 
    elsif params[:order][:address_option] == "1"
      @address = Address.find(params[:order]["address_id"])
@@ -30,15 +30,23 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.shipping_cost = @order.shipping_cost.to_i
+    @order.total_payment = @order.total_payment.to_i
+
     @order.save
-    
+
     current_customer.cart_items.each do |cart_item|
         @order_product = OrderProduct.new
         @order_product.order_id = @order.id
         @order_product.product_id = cart_item.product_id
         @order_product.amount = cart_item.amount
-        
-        
+        @order_product.price = cart_item.product.add_tax_price
+        @order_product.save
+    end
+
+    current_customer.cart_items.destroy_all
+    redirect_to complete_orders_path
   end
 
   def complete
@@ -55,7 +63,7 @@ class Public::OrdersController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+      params.require(:order).permit(:payment_type, :postal_code, :address, :name)
     end
 
 end
