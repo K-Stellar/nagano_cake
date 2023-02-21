@@ -5,3 +5,6 @@ ja:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
 
+  time:
+    formats:
+      default: "%Y/%m/%d"
