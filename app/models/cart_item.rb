@@ -1,7 +1,7 @@
 class CartItem < ApplicationRecord
   belongs_to :product
   belongs_to :customer
-  belongs_to :order
+  # belongs_to :order
 
 
   def subtotal
