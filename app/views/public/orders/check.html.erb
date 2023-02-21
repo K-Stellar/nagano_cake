@@ -1,2 +1,76 @@
-<h1>Orders#check</h1>
-<p>Find me in app/views/orders/check.html.erb</p>
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-11 col-sm-12 mx-auto">
+      <div class="row mb-4">
+        <div class="col-7">
+          <span class="h3">注文情報確認</span>
+        </div>
+      </div>
+
+      <% if current_customer.cart_items.present? %>
+        <div class="row">
+          <table class="table table-bordered col-7">
+            <thead class="bg-light text-center">
+              <th>商品名</th>
+              <th>単価(税込)</th>
+              <th>数量</th>
+              <th>小計</th>
+            </thead>
+            <tbody>
+            <% @cart_items.each do |cart_item| %>
+              <tr>
+                <td>
+                  <%= image_tag cart_item.product.get_image, size: '50x30', class: 'img-fluid mr-3' %>
+                  <%= cart_item.product.name %>
+                </td>
+                <td class="text-right pr-3">
+                  <%= cart_item.product.add_tax_price.to_s(:delimited) %>
+                </td>
+                <td class="text-center">
+                  <%= cart_item.amount%>
+                </td>
+                <td class="text-right pr-3">
+                  <%= cart_item.subtotal.to_s(:delimited) %>
+                </td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+          <table class="table table-bordered col-3 offset-1 align-self-start">
+            <tbody>
+                <tr>
+                    <th scope="row" class='bg-light col-lg-4'>送料</th>
+                    <td class='col-lg-8 py-2'>800</td>
+                </tr>
+                <tr>
+                    <th scope="row" class='bg-light col-lg-4'>商品合計</th>
+                    <td class='col-lg-8 py-2'><%= @total_price.floor.to_s(:delimited) %></td>
+                </tr>
+                <tr>
+                    <th scope="row" class='bg-light col-lg-4'>請求金額</th>
+                    <td class='col-lg-8 py-2'><%= (@total_price+800).to_s(:delimited) %></td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="row mt-3">
+          <dt class="col-2"><span class="h4">支払方法</span></dt>
+          <dd class="my-auto col-8"><span class="h6"><%= Order.payment_methods_i18n[@order.payment_method] %></span></dd>
+        </div>
+
+        <div class="row mt-5">
+          <dt class="col-2"><span class="h4">お届先</span></dt>
+          <dd class="col-8 my-auto"><span class="h6">〒<%= @order.postal_code %> <%= @order.address %></span></dd>
+        </div>
+        <div class="row">
+          <div class="col-2"></div>
+          <span class="col-8 h6"><%= @order.name %></span>
+        </div>
+
+        <div class="row justify-content-center my-5 pt-3"><%= link_to "注文を確定する", complete_orders_path, class:"btn btn-info btn-lg col-3" %></div>
+      <% else %>
+        <h1>現在カートに商品はありません。</h1>
+      <% end %>
+  </div>
+</div>
