@@ -2,7 +2,7 @@ class Product < ApplicationRecord
   has_one_attached :image
   belongs_to :genre
   has_many :cart_items, dependent: :destroy
-  has_many :order_items
+  has_many :order_products
 
   validates :price, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 
