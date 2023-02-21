@@ -1,1 +1,81 @@
-
+<div class="container my-5">
+  <div class="row">
+    <div class="col">
+      <h3><span class="bg-light bg-gradient">注文履歴詳細</span></h3>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td class="w-25"><strong>購入者</strong></td>
+            <td><%= @order.customer.full_name %></td>
+          </tr>
+          <tr>
+            <td class="w-25">氏名</td>
+            <td><%= @customer.last_name %>　<%= @customer.first_name %></td>
+          </tr>
+          <tr>
+            <td class="w-25">フリガナ</td>
+            <td><%= @customer.last_name_kana %>　<%= @customer.first_name_kana %></td>
+          </tr>
+          <tr>
+            <td class="w-25">郵便番号</td>
+            <td><%= @customer.postal_code %></td>
+          </tr>
+          <tr>
+            <td class="w-25">住所</td>
+            <td><%= @customer.address %></td>
+          </tr>
+          <tr>
+            <td class="w-25">電話番号</td>
+            <td><%= @customer.phone_num %></td>
+          </tr>
+          <tr>
+            <td class="w-25">メールアドレス</td>
+            <td><%= @customer.email %></td>
+          </tr>
+          <tr>
+            <td class="w-25">会員ステータス</td>
+            <td>
+              <% if @customer.is_deleted == false %>
+                <strong class="text-success">有効</strong>
+              <% else %>
+                <strong class="text-denger">退会済み</strong>
+              <%end%>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="w-75 mx-auto">
+        <%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-lg btn-success mr-5" %>
+        <%= link_to "注文履歴一覧を見る", admin_root_path, class: "btn btn-lg btn-primary" %>
+      </div>
+      
+      <table class="table table-borderless border-top mt-3">
+      <thead class="bg-light">
+        <th class="border-top">商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= link_to product.name, admin_product_path(product.id), class: "text-dark border-bottom border-dark" %></td>
+            <td><%= product.price.to_s(:delimited) %></td>
+            <td><%= product.genre.name %></td>
+            <td>
+              <!--販売中と販売停止中で色を変えなければならないため、条件分岐で表示-->
+              <% if product.is_active == true %>
+                <strong class="text-success">販売中</strong>
+              <% else %>
+                <strong class="text-muted">販売停止中</strong>
+              <%end%>
+            </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
