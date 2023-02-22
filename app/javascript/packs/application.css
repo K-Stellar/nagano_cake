@@ -7,6 +7,14 @@ body > footer {
 }
 /*フッター固定*/
 
+header {
+  background-color: #8d511c !important
+}
+
+footer {
+  background-color: #62482f !important
+}
+
 
 /*ページネーションデザイン修正*/
 .pagination>li>a {
@@ -25,6 +33,8 @@ body > footer {
   width: 80%;
   background-image:url(../../assets/images/background.png);
   background-size: 100%100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 12px 0 #b4aca5;
 }
 
 /*注文完了画面*/
