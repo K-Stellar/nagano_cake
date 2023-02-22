@@ -27,7 +27,7 @@
               </tr>
               <tr>
                   <th scope="row" class='bg-light col-lg-4 align-middle'>支払方法</th>
-                  <td class='col-lg-8 py-2'><%= @order.payment_type %></td>
+                  <td class='col-lg-8 py-2'><%= Order.payment_types_i18n[@order.payment_type] %></td>
               </tr>
               <tr>
                   <th scope="row" class='bg-light col-lg-4 align-middle'>ステータス</th>
