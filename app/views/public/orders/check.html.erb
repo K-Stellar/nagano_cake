@@ -42,8 +42,8 @@
             <tbody>
                 <tr>
                     <th scope="row" class='bg-light col-lg-4'>送料</th>
-                    <td class='col-lg-8 py-2'>800</td>
-                     <%= f.hidden_field :shipping_cost, :value => 800 %>
+                    <td class='col-lg-8 py-2'><%= @order.shipping_cost %></td>
+                    <%= f.hidden_field :shipping_cost, :value => @order.shipping_cost %>
                 </tr>
                 <tr>
                     <th scope="row" class='bg-light col-lg-4'>商品合計</th>
@@ -51,8 +51,8 @@
                 </tr>
                 <tr>
                     <th scope="row" class='bg-light col-lg-4'>請求金額</th>
-                    <td class='col-lg-8 py-2'><%= (@total_price+800).to_s(:delimited) %></td>
-                    <%= f.hidden_field :total_payment, :value => @total_price+800 %>
+                    <td class='col-lg-8 py-2'><%= (@total_price+@order.shipping_cost).to_s(:delimited) %></td>
+                    <%= f.hidden_field :total_payment, :value => @total_price+@order.shipping_cost %>
                 </tr>
             </tbody>
           </table>
