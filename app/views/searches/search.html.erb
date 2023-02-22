@@ -1,0 +1,11 @@
+<h4>検索結果</h4>
+
+<table class="table table-hover table-inverse">
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

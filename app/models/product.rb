@@ -16,5 +16,9 @@ class Product < ApplicationRecord
   def add_tax_price
     (price*1.1).floor
   end
+  
+  def self.looks(word)
+    @product = Product.where("name LIKE?","%#{word}%")
+  end
 
 end
