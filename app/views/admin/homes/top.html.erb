@@ -22,7 +22,7 @@
                   <% end %>
                 </td>
                 <td><%= order.customer.full_name %></td>
-                <td>1</td>
+                <td><%= order.order_products.sum(:amount) %></td>
                 <td><%= order.status %></td>
               </tr>
             <% end %>
@@ -32,6 +32,6 @@
     </div>
   </div>
   <div class="row justify-content-center">
-    <%= paginate @customers %>
+  <%= paginate @orders %>
   </div>
 </div>
