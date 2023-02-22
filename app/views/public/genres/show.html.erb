@@ -5,7 +5,7 @@
       <%= render 'public/products/genres', genres: @genres %>
     </div>
     <div class='col-md-8 offset-md-1'>
-      <div class='border-bottom form-group row form-inline'><h3>ジャンル / <%= @genre.name %>一覧</h3><span>(全<%= @genre.products.count %>件)</span></div>
+      <div class='border-bottom form-group row form-inline'><h3>ジャンル / "<%= @genre.name %>" 一覧</h3><span>(全<%= @genre.products.count %>件)</span></div>
       <%= render 'public/products/index', products: @genre.products %>
     </div>
   </div>
