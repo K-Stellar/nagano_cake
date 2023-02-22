@@ -52,7 +52,6 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.latest
-
   end
 
   def show

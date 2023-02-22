@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       post :check, on: :collection
       get :complete, on: :collection
     end
+    resources :genres, only: [:show]
   end
 
   # 顧客用

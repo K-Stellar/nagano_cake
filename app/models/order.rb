@@ -1,8 +1,8 @@
 class Order < ApplicationRecord
 
   belongs_to :customer, dependent: :destroy
-  has_many :products, through: :order_products
   has_many :order_products
+  has_many :products, through: :order_products
 
   scope :latest, -> {order(created_at: :desc)}
 
