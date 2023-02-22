@@ -26,14 +26,12 @@ class Public::OrdersController < ApplicationController
 
    @cart_items = current_customer.cart_items.all
    @total_price = @cart_items.inject(0) { |sum, product| sum + product.subtotal }
+   @order.shipping_cost = 800
   end
 
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.shipping_cost = 800.to_i
-    @order.total_payment = @total_price.to_i
-
     @order.save
 
     current_customer.cart_items.each do |cart_item|
@@ -65,7 +63,7 @@ class Public::OrdersController < ApplicationController
 
   private
     def order_params
-      params.require(:order).permit(:payment_type, :postal_code, :address, :name)
+      params.require(:order).permit(:payment_type, :postal_code, :address, :name, :total_payment, :shipping_cost)
     end
 
 end
