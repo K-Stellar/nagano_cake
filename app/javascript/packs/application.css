@@ -23,7 +23,7 @@ body > footer {
 .cakeimg1 {
   height: 300px;
   width: 80%;
-  background-image:url(../../assets/images/background.jpg);
+  background-image:url(../../assets/images/background.png);
   background-size: 100%100%;
 }
 
@@ -35,3 +35,12 @@ body > footer {
     transform: translate(-50%, -50%);
 }
 /*注文完了画面*/
+
+.next_button{
+    color: #3a3a3a;
+    background-color: #fff;
+    padding: 6px 12px;
+    border: 1px solid #1e1e1e;
+    border-radius: 18px;
+    font-size: 16px;
+}

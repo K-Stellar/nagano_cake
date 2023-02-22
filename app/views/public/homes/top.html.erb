@@ -8,18 +8,18 @@
     <div class='col-md-8 offset-md-1'>
       <div class="row cakeimg1">
         <div class="m-auto">
-          <strong class="">
-            ようこそ、ながのCAKEへ！<br>
-            このサイトは、ケーキ販売のECサイトになります。<br>
-            会員でない方も商品の閲覧はできますが、<br>
-            購入には会員登録が必要になります。
-          </strong>
+          <!--<strong class="">-->
+          <!--  ようこそ、ながのCAKEへ！<br>-->
+          <!--  このサイトは、ケーキ販売のECサイトになります。<br>-->
+          <!--  会員でない方も商品の閲覧はできますが、<br>-->
+          <!--  購入には会員登録が必要になります。-->
+          <!--</strong>-->
         </div>
       </div>
       <div class='border-bottom form-group row form-inline mt-5'><h3>新着商品</h3></div>
       <%= render 'public/products/index', products: @products%>
       <div class="row justify-content-end">
-        <%= link_to "全ての商品を見る >", products_path %>
+        <%= link_to "全ての商品を見る >", products_path, class:"next_button" %>
       </div>
     </div>
   </div>
