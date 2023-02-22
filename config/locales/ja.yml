@@ -4,11 +4,13 @@ ja:
       payment_method:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
-        
+
   time:
     formats:
-      default: "%Y/%m/%d"
-        
+      default: "%Y/%m/%d %H:%M:%S"
+      date: "%Y/%m/%d"
+      short: "%m/%d"
+
   # モデルの日本語化
   activerecord:
     models:
@@ -23,8 +25,8 @@ ja:
         information: 商品説明
         price: 税抜価格
         is_active: 商品ステータス
-    
-    #エラーの日本語化 
+
+    #エラーの日本語化
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -41,7 +43,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -67,7 +69,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -198,14 +200,14 @@ ja:
       last_word_connector: "、"
       two_words_connector: "、"
       words_connector: "、"
-  time:
-    am: 午前
-    formats:
-      default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
-      long: "%Y/%m/%d %H:%M"
-      short: "%m/%d %H:%M"
-    pm: 午後
+  # time:
+  #   am: 午前
+  #   formats:
+  #     default: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
+  #     long: "%Y/%m/%d %H:%M"
+  #     short: "%m/%d %H:%M"
+  #   pm: 午後
 
-  time:
-    formats:
-      default: "%Y/%m/%d"
+  # time:
+  #   formats:
+  #     default: "%Y/%m/%d"

@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-lg-10 col-sm-12 mx-auto">
       <div class="row mb-3">
-        <div class="col-8">
+        <div class="col-12">
           <h4><span class="text-light bg-secondary">　注文履歴一覧　</span></h4>
         </div>
       </div>
@@ -21,7 +21,7 @@
           <% @orders.each do |order| %>
             <tr>
               <td>
-                <%= l order.created_at %>
+                <%= l order.created_at, format: :date %>
               </td>
               <td>
                 <%= order.postal_code %><br>
@@ -34,7 +34,7 @@
                 <% end %>
               </td>
               <td>
-                <%= order.total_payment %>
+                <%= order.total_payment %> 
               </td>
               <td>
                 <%= order.status %>
