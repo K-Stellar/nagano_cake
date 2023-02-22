@@ -33,10 +33,10 @@
                   <%= order_product.product.name %><br>
                 <% end %>
               </td>
-              <td>
-                <%= order.total_payment %> 
+              <td class="text-right">
+                <%= order.total_payment.to_s(:delimited) %> 円
               </td>
-              <td>
+              <td class="text-center">
                 <%= order.status %>
               </td>
               <td class="text-center">
