@@ -2,6 +2,7 @@ class Order < ApplicationRecord
 
   belongs_to :customer, dependent: :destroy
   has_many :products, through: :order_products
+  has_many :order_products
 
   enum payment_type: { credit_card: 0, transfer: 1 }
 
