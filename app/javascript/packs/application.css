@@ -8,11 +8,15 @@ body > footer {
 /*フッター固定*/
 
 header {
-  background-color: #8d511c !important
+  background-color: #592f09 !important
 }
 
 footer {
   background-color: #62482f !important
+}
+
+body{
+  color: #495057 !important;
 }
 
 
