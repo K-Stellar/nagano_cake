@@ -5,7 +5,6 @@ class Order < ApplicationRecord
   has_many :products, through: :order_products
 
   scope :latest, -> {order(created_at: :desc)}
-
   enum payment_type: { credit_card: 0, transfer: 1 }
 
 
