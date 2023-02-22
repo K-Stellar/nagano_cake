@@ -6,7 +6,9 @@ class Public::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
-    @cart_item = current_customer.cart_items.new
+    if customer_signed_in?
+      @cart_item = current_customer.cart_items.new
+    end
   end
 
 
