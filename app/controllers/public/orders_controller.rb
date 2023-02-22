@@ -51,11 +51,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders.latest
-
+    @orders = current_customer.orders.all
+    # @total_price = order.order_products.inject(0) { |sum, product| sum + product.subtotal }
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
 
