@@ -3,7 +3,7 @@ class Order < ApplicationRecord
   belongs_to :customer, dependent: :destroy
   has_many :products, through: :order_products
 
-  enum payment_method: { credit_card: 0, transfer: 1 }
+  enum payment_type: { credit_card: 0, transfer: 1 }
   
   
   enum status: {
@@ -13,5 +13,6 @@ class Order < ApplicationRecord
      "発送準備中":3, 
      "発送済み":4
   }
+  
 
 end
