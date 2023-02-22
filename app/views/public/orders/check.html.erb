@@ -41,9 +41,10 @@
           <table class="table table-bordered col-3 offset-1 align-self-start">
             <tbody>
                 <tr>
+                    <% @order.shipping_cost = 800 %>
                     <th scope="row" class='bg-light col-lg-4'>送料</th>
-                    <td class='col-lg-8 py-2'>800</td>
-                     <%= f.hidden_field :shipping_cost, :value => 800 %>
+                    <td class='col-lg-8 py-2'><%= @order.shipping_cost %></td>
+                    <%= f.hidden_field :shipping_cost, :value => @order.shipping_cost %>
                 </tr>
                 <tr>
                     <th scope="row" class='bg-light col-lg-4'>商品合計</th>

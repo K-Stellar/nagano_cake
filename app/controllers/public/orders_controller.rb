@@ -31,8 +31,8 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    @order.shipping_cost = @order.shipping_cost.to_i
-    @order.total_payment = @order.total_payment.to_i
+    @order.shipping_cost = 800.to_i
+    @order.total_payment = @total_price.to_i
 
     @order.save
 

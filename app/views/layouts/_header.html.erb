@@ -8,7 +8,7 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
 
-          <% if request.path.match(/\/admin(\/)?/) %>
+          <% if request.path.match(/\/admin(\/)?/) && admin_signed_in?%>
             <li>
               <%= link_to admin_products_path do %>
                 <div class="nav-link text-light">商品一覧</div>
@@ -32,6 +32,33 @@
             <li>
               <%= link_to destroy_admin_session_path, method: :delete do %>
                 <div class="nav-link text-light">ログアウト</div>
+              <%end%>
+            </li>
+
+          <% elsif request.path.match(/\/admin(\/)?/) %>
+            <li>
+              <%= link_to admin_products_path do %>
+                <div class="nav-link text-light">商品一覧</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to admin_customers_path do %>
+                <div class="nav-link text-light">会員一覧</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to admin_root_path do %>
+                <div class="nav-link text-light">注文履歴一覧</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to admin_genres_path do %>
+                <div class="nav-link text-light">ジャンル一覧</div>
+              <%end%>
+            </li>
+            <li>
+              <%= link_to new_admin_session_path do %>
+                <div class="nav-link text-light">ログイン</div>
               <%end%>
             </li>
 
