@@ -54,7 +54,7 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.latest
-    # @total_price = order.order_products.inject(0) { |sum, product| sum + product.subtotal }
+
   end
 
   def show
