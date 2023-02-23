@@ -5,9 +5,11 @@
         <div class="col-8">
           <h4><span class="text-light bg-secondary">　ショッピングカート　</span></h4>
         </div>
-        <div class="col-4 text-right">
-          <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class:'btn btn-outline-danger' %>
-        </div>
+        <% if current_customer.cart_items.present? %>
+          <div class="col-4 text-right">
+            <%= link_to 'カートを空にする', destroy_all_cart_items_path, method: :delete, class:'btn btn-outline-danger' %>
+          </div>
+        <% end %>
       </div>
 
       <% if current_customer.cart_items.present? %>

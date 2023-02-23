@@ -26,8 +26,8 @@ body{
 }
 
 .pagination>.active>a {
-    background-color: #a84b4f !important;
-    border-color: #a84b4f !important;
+    background-color: #d05c62 !important;
+    border-color: #d05c62 !important;
   }
 
 .page-link:hover {
@@ -74,11 +74,25 @@ body{
 
 /*link hover*/
 .a {
-  transition: 0.3s;
+  transition: 0.4s;
 }
 .a:hover {
     text-decoration: none !important;
     font-size: 17px;;
+}
+
+.img_wrap{
+  width: 140px;
+  height: 100px;
+  cursor: pointer;
+}
+.img_wrap img{
+  width: 100%;
+  transition-duration: 0.4s;
+}
+.img_wrap:hover img{
+  transform: scale(1.1);
+  transition-duration: 0.4s;
 }
 
 /*リンクの色*/
