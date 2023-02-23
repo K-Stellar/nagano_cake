@@ -2,7 +2,9 @@
   <%= form_with url: search_path, local: true, method: :get do |f| %>
     <div class="input-group">
       <%= f.text_field :word, class: "form-control", placeholder: "Search..." %>
-      <%= f.submit "検索", class: "btn btn-primary" %>
+      <%= button_tag type: "submit", class: "btn btn-light" do %>
+      <i class="fas fa-search"></i>
+      <% end %>
     </div>
   <% end %>
 </div>
