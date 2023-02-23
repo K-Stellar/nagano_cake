@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :order_products, only: [:update]
+    get "search" => "searches#search"
   end
 
   # 管理者用

@@ -115,7 +115,11 @@
       </div>
     </div>
     <div>
-      <%= render 'layouts/search' %>
+      <% if admin_signed_in? %>
+        <%= render 'layouts/admin_search' %>
+      <% else %>
+        <%= render 'layouts/search' %>
+      <% end %>
     </div>
   </nav>
 </header>
