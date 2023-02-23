@@ -1,6 +1,7 @@
-<ul class="list-group my-3">
-  <li class="list-group-item">ケーキ</li>
-  <li class="list-group-item">プリン</li>
-  <li class="list-group-item">焼き菓子</li>
-  <li class="list-group-item">キャンディ</li>
-</ul>
+<% genres.each do |genre| %>
+  <table class="table">
+    <tr>
+      <td><%= link_to genre.name, genre_path(genre.id) %></td>
+    </tr>
+  </table>
+<% end %>
