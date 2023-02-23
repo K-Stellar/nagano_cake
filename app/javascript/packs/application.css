@@ -7,6 +7,18 @@ body > footer {
 }
 /*フッター固定*/
 
+header {
+  background-color: #d05c62 !important
+}
+
+footer {
+  background-color: #a94a4f  !important
+}
+
+body{
+  color: #212529e8 !important;
+}
+
 
 /*ページネーションデザイン修正*/
 .pagination>li>a {
@@ -14,17 +26,30 @@ body > footer {
 }
 
 .pagination>.active>a {
-    background-color: #c45500 !important;
-    border-color: #c45500 !important;
+    background-color: #d05c62 !important;
+    border-color: #d05c62 !important;
   }
-/*ページネーションデザイン修正*/
+
+.page-link:hover {
+    color: #a84b4f !important;
+}
+
+.page-item.active .page-link {
+    color: #fff !important;
+}
+
+.page-item .page-link {
+    border-radius: 0.4rem;
+}
 
 /*homestopの背景画像*/
 .cakeimg1 {
   height: 300px;
   width: 80%;
-  background-image:url(../../assets/images/background.jpg);
+  background-image:url(../../assets/images/background.png);
   background-size: 100%100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 12px 0 #b4aca5;
 }
 
 /*注文完了画面*/
@@ -35,3 +60,44 @@ body > footer {
     transform: translate(-50%, -50%);
 }
 /*注文完了画面*/
+
+/*Top page ボタン*/
+.next_button{
+    color: #3a3a3a;
+    background-color: #fff;
+    padding: 6px 12px;
+    border: 1px solid #1e1e1e;
+    border-radius: 18px;
+    font-size: 16px;
+}
+/*Top page ボタン*/
+
+/*link hover*/
+.a {
+  transition: 0.4s;
+}
+.a:hover {
+    text-decoration: none !important;
+    font-size: 17px;;
+}
+
+.img_wrap{
+  width: 140px;
+  height: 100px;
+  cursor: pointer;
+}
+.img_wrap img{
+  width: 100%;
+  transition-duration: 0.4s;
+}
+.img_wrap:hover img{
+  transform: scale(1.1);
+  transition-duration: 0.4s;
+}
+
+/*リンクの色*/
+.link{
+  text-decoration: none !important;
+  color: #30547a
+}
+
