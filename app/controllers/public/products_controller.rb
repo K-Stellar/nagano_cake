@@ -2,6 +2,7 @@ class Public::ProductsController < ApplicationController
   def index
     @products=Product.all
     @products_page=Product.page(params[:page])
+    @genres = Genre.all
   end
 
   def show
@@ -9,6 +10,8 @@ class Public::ProductsController < ApplicationController
     if customer_signed_in?
       @cart_item = current_customer.cart_items.new
     end
+    @genres = Genre.all
+    @genre = Genre.find(params[:id])
   end
 
 

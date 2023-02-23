@@ -52,10 +52,10 @@ class Public::OrdersController < ApplicationController
 
   def index
     @orders = current_customer.orders.latest
-
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
 

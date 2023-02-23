@@ -2,7 +2,7 @@
   <div class='row'>
     <div class='col-md-2'>
       <h5>ジャンル検索</h5>
-      <%= render 'genres' %>
+      <%= render 'genres', genres: @genres %>
     </div>
     <div class='col-md-8 offset-md-1'>
       <div class='border-bottom form-group row form-inline'><h3>商品一覧</h3><span>(全<%= @products.count %>件)</span></div>
