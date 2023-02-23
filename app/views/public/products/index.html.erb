@@ -4,12 +4,12 @@
       <h5>ジャンル検索</h5>
       <%= render 'genres', genres: @genres %>
     </div>
-    <div class='col-md-8 offset-md-1'>
+    <div class='col-md-8 offset-md-1 mb-5'>
       <div class='border-bottom form-group row form-inline'><h3>商品一覧</h3><span>(全<%= @products.count %>件)</span></div>
       <%= render 'index', products: @products_page%>
     </div>
   </div>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-5">
     <%= paginate @products_page %>
   </div>
 </div>
