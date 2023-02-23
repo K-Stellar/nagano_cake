@@ -32,31 +32,45 @@
         </tbody>
       </table>
       
-      <table class="table table-borderless border-top mt-3">
-         <thead class="bg-light">
-           <th class="border-top">商品ID</th>
-            <th>商品名</th>
-           <th>単価（税込）</th>
-            <th>数量</th>
-          <th>制作ステータス</th>
-        </thead>
-      <tbody>
-          <% @order_products.each do |order_product| %>
-            <tr>
-              <td><%= order_product.product.name %></td>
-              <td><%= order_product.price.to_s(:delimited) %></td>
-              <td><%= order_product.amount %></td>
-              <td></td>
-              <td>
-              <%= form_with model: order_product, url: admin_order_product_path(order_product.id), method: :patch, local:true do |f| %> 
-                <%= f.select :product_status, OrderProduct.product_statuses.keys %>
-                <%= f.submit "更新", class: "btn btn-success ml-3" %>
+      <div class="row">
+        <div class="col-9">
+          <table class="table table-borderless border-top mt-3">
+             <thead class="bg-light">
+               <th class="border-top">商品ID</th>
+                <th>商品名</th>
+               <th>単価（税込）</th>
+                <th>数量</th>
+              <th>制作ステータス</th>
+            </thead>
+          <tbody>
+              <% @order_products.each do |order_product| %>
+                
+                  <tr>
+                    <td><%= order_product.id %></td>
+                    <td><%= order_product.product.name %></td>
+                    <td><%= order_product.price.to_s(:delimited) %></td>
+                    <td><%= order_product.amount %></td>
+                    <td>
+                      <%= form_with model: order_product, url: admin_order_product_path(order_product.id), method: :patch, local:true do |f| %> 
+                        <%= f.select :product_status, OrderProduct.product_statuses.keys %>
+                        <%= f.submit "更新", class: "btn btn-success ml-3" %>
+                      <%end%>
+                    </td>s
+                  </tr>
+                
               <%end%>
-              </td>
-            </tr>
-          <%end%>
-        </tbody>
-      </table>
+            </tbody>
+          </table>
+        </div>
+      
+        <div class="col-3 pl-5 align-items-end">
+          <dl class="row">
+            <dt class="col-6"><strong>商品合計</strong></dt>
+            <dd class="col-6"><%= @order.total_payment %>円</dd>
+            
+          </dl>
+        </div>
+      </div>
     </div>
   </div>
 </div>
