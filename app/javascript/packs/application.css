@@ -26,8 +26,8 @@ body{
 }
 
 .pagination>.active>a {
-    background-color: #c45500 !important;
-    border-color: #c45500 !important;
+    background-color: #a84b4f !important;
+    border-color: #a84b4f !important;
   }
 
 /*homestopの背景画像*/
@@ -60,15 +60,16 @@ body{
 }
 /*Top page ボタン*/
 
-/*hover*/
-a {
+/*link hover*/
+.a {
   transition: 0.3s;
 }
-a:hover {
+.a:hover {
     text-decoration: none !important;
-    font-size: 18px;;
+    font-size: 17px;;
 }
 
+/*リンクの色*/
 .link{
   text-decoration: none !important;
   color: #30547a

@@ -1,7 +1,7 @@
 <% genres.each do |genre| %>
   <table class="table">
-    <tr>
-      <td><%= link_to genre.name, genre_path(genre.id), class:"link"%></td>
+    <tr class=" row ">
+      <td class="col-10 pl-3 pb-0"><%= link_to genre.name, genre_path(genre.id), class:"link a"%></td>
     </tr>
   </table>
 <% end %>
