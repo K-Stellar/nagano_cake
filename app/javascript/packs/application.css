@@ -30,6 +30,18 @@ body{
     border-color: #a84b4f !important;
   }
 
+.page-link:hover {
+    color: #a84b4f !important;
+}
+
+.page-item.active .page-link {
+    color: #fff !important;
+}
+
+.page-item .page-link {
+    border-radius: 0.4rem;
+}
+
 /*homestopの背景画像*/
 .cakeimg1 {
   height: 300px;
