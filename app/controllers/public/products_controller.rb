@@ -11,7 +11,6 @@ class Public::ProductsController < ApplicationController
       @cart_item = current_customer.cart_items.new
     end
     @genres = Genre.all
-    @genre = Genre.find(params[:id])
   end
 
 

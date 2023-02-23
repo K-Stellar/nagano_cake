@@ -12,7 +12,7 @@ header {
 }
 
 footer {
-  background-color: #d05c62 !important
+  background-color: #a94a4f  !important
 }
 
 body{
@@ -29,7 +29,6 @@ body{
     background-color: #c45500 !important;
     border-color: #c45500 !important;
   }
-/*ページネーションデザイン修正*/
 
 /*homestopの背景画像*/
 .cakeimg1 {
@@ -50,6 +49,7 @@ body{
 }
 /*注文完了画面*/
 
+/*Top page ボタン*/
 .next_button{
     color: #3a3a3a;
     background-color: #fff;
@@ -58,3 +58,19 @@ body{
     border-radius: 18px;
     font-size: 16px;
 }
+/*Top page ボタン*/
+
+/*hover*/
+a {
+  transition: 0.3s;
+}
+a:hover {
+    text-decoration: none !important;
+    font-size: 18px;;
+}
+
+.link{
+  text-decoration: none !important;
+  color: #30547a
+}
+
