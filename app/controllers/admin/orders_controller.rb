@@ -2,8 +2,7 @@ class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
   def show
     @order=Order.find(params[:id])
-    @orders=Order.all
-    @order_products=OrderProduct.all
+    @order_products=OrderProduct.where(order_id: @order.id)
   end
   
   def update
