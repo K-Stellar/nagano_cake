@@ -7,14 +7,14 @@ class Admin::OrdersController < ApplicationController
   end
   
   def update
-    order=order.find(params[:id])
-    order.update(order_paramas)
+    @order=Order.find(params[:id])
+    @order.update(order_params)
     redirect_to request.referer
   end
   
   private
   
-  def order_paramas
-    paramas.require(:order).permit(:status)
+  def order_params
+    params.require(:order).permit(:status)
   end
 end
