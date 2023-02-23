@@ -12,13 +12,13 @@
 
         <div class='pl-3 mb-4'>
           <div  class='form-check row'>
-            <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-            <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+            <%= f.radio_button :payment_type, Order.payment_types.key(0) %>
+            <%= f.label :payment_type_credit_card, Order.payment_types_i18n[:credit_card] %>
           </div>
 
           <div  class='form-check row'>
-            <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-            <%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+            <%= f.radio_button :payment_type, Order.payment_types.key(1) %>
+            <%= f.label :payment_type_transfer, Order.payment_types_i18n[:transfer]%>
           </div>
         </div>
 
@@ -29,7 +29,7 @@
         <div class='pl-3'>
           <div  class='form-check row my-3'>
             <%= f.radio_button :address_option, 0 %>
-            <%= f.label :address_option, "ご自身の住所", class:"pl-2 h5" %>
+            <%= f.label :address_option_0, "ご自身の住所", class:"pl-2 h5" %>
           </div>
 
           <div  class='row offset-1 pb-4'>
@@ -38,7 +38,7 @@
 
           <div  class='form-check row my-3'>
             <%= f.radio_button :address_option, 1 %>
-            <%= f.label :address_option, "登録済住所から選択", class:"pl-2 h5 col-6" %>
+            <%= f.label :address_option_1, "登録済住所から選択", class:"pl-2 h5 col-6" %>
           </div>
 
           <div  class='row offset-1 pb-4'>
@@ -47,7 +47,7 @@
 
           <div  class='form-check row my-3'>
             <%= f.radio_button :address_option, 2 %>
-            <%= f.label :address_option,"新しいお届先", class:"pl-2 h5" %>
+            <%= f.label :address_option_2,"新しいお届先", class:"pl-2 h5" %>
           </div>
 
           <div class="form-group row offset-1 my-3">

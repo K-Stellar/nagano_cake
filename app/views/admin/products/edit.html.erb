@@ -2,6 +2,11 @@
   <div class="row">
     <div class="col">
         <h3><span class="bg-light bg-gradient">商品編集</span></h3>
+        
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>"><%= sanitize message, tags: %w(br) %></div>
+        <%end%>
+        
         <%= form_with model: @product, url: admin_product_path(@product.id), method: :patch, local:true, class: "container text-center pl-9" do |f| %>
         <div class="form-group row">
           <label class="col-4 text-right">商品画像</label>

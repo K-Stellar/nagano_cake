@@ -1,4 +1,5 @@
 class Admin::ProductsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @products=Product.page(params[:page]).per(10)
   end
@@ -20,7 +21,7 @@ class Admin::ProductsController < ApplicationController
     if @product.save
       redirect_to admin_product_path(@product.id)
     else
-      flash[:danger]=@product.errors.full_messages
+      flash[:danger]="入力内容に不備があります。<br>・#{@product.errors.full_messages.join('<br>・')}"
       redirect_to new_admin_product_path
     end
   end
@@ -30,7 +31,8 @@ class Admin::ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to admin_product_path(@product.id)
     else
-      render 'edit'
+      flash[:danger]="入力内容に不備があります。<br>・#{@product.errors.full_messages.join('<br>・')}"
+      redirect_to new_admin_product_path
     end
   end
 
