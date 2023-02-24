@@ -76,7 +76,7 @@
 + 検索の際には、プルダウンにて商品検索か会員検索か選択できます。
 
 ## 設計書
-+ [ER図](https://github.com/K-Stellar/nagano_cake/files/10822185/ER.pdf)
++ [ER図](https://user-images.githubusercontent.com/121223610/221136073-249fef26-e03a-41ed-bef5-92c610d16549.png)
 + [テーブル定義書](https://github.com/K-Stellar/nagano_cake/files/10822001/default.pdf)
 + [アプリケーション詳細設計書](https://github.com/K-Stellar/nagano_cake/files/10821973/default.pdf)
 
