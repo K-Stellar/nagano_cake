@@ -40,6 +40,7 @@ body{
 
 .page-item .page-link {
     border-radius: 0.4rem;
+    color: #696969 !important;
 }
 
 /*homestopの背景画像*/
