@@ -32,7 +32,7 @@ class Admin::ProductsController < ApplicationController
       redirect_to admin_product_path(@product.id)
     else
       flash[:danger]="入力内容に不備があります。<br>・#{@product.errors.full_messages.join('<br>・')}"
-      redirect_to new_admin_product_path
+      redirect_to edit_admin_product_path(@product.id)
     end
   end
 
