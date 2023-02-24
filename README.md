@@ -1,5 +1,7 @@
 # ながのCAKE
-<img width="635" alt="スクリーンショット 2023-02-24 16 31 33" src="https://user-images.githubusercontent.com/121223610/221118772-1848293e-729e-464c-9f9a-920091552965.png">
+<img width="640" alt="naganocake" src="https://user-images.githubusercontent.com/121223610/221133606-b115bf97-e235-4b12-9491-da8492b6452c.png">
+### トップページ
+<img width="1323" alt="naganocake-top" src="https://user-images.githubusercontent.com/121223610/221133260-04e3187b-5427-4c2c-8552-9fedf5f0c844.png">
 
 
 ## 概要
@@ -72,9 +74,9 @@
 + 検索の際には、プルダウンにて商品検索か会員検索か選択できます。
 
 ## 設計書
-+ ER図
++ [ER図](https://github.com/K-Stellar/nagano_cake/files/10822185/ER.pdf)
 + [テーブル定義書](https://github.com/K-Stellar/nagano_cake/files/10822001/default.pdf)
-+ [詳細設計書](https://github.com/K-Stellar/nagano_cake/files/10821973/default.pdf)
++ [アプリケーション詳細設計書](https://github.com/K-Stellar/nagano_cake/files/10821973/default.pdf)
 
 
 ### 開発環境
