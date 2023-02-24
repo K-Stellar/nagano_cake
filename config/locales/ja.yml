@@ -24,7 +24,7 @@ ja:
         genre: ジャンル名
         information: 商品説明
         price: 税抜価格
-        is_active: 商品ステータス
+        is_active: 販売ステータス
 
     #エラーの日本語化
     errors:
