@@ -1,11 +1,11 @@
 <div class="search_form">
   <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
-    <div class="input-group">
-      <%= f.text_field :word, class: "form-control", placeholder: "Search..." %>
+    <div class="input-group no-border">
+      <%= f.text_field :word, class: "form-control search-control", placeholder: "Search..." %>
       <% if admin_signed_in? %>
-        <%= f.select :range, options_for_select([['Product'], ['Customer']]) %>
+        <%= f.select :range, options_for_select([['Product'], ['Customer']]), class:"admin-search" %>
       <% end %>
-      <%= button_tag type: "submit", class: "btn btn-light" do %>
+      <%= button_tag type: "submit", class: "btn btn-light search-btn" do %>
       <i class="fas fa-search"></i>
       <% end %>
     </div>
