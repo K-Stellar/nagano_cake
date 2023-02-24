@@ -72,29 +72,29 @@
 
           <% elsif customer_signed_in? %>
             <li>
-              <p class="nav-link text-light mr-5">ようこそ、<%= current_customer.last_name %>さん！</p>
+              <p class="nav-link text-light mr-5 mt-2">ようこそ、<%= current_customer.last_name %>さん！</p>
             </li>
             <li>
               <%= link_to customers_path, class:"a-header" do %>
-                <div class="nav-link text-light a-header rounded-pill">マイページ</div>
+                <div class="nav-link text-light a-header rounded-pill mt-2">マイページ</div>
               <%end%>
             </li>
-            <li class="line-header nav-link">|</li>
+            <li class="line-header nav-link mt-2">|</li>
             <li>
               <%= link_to products_path, class:"a-header" do %>
-                <div class="nav-link text-light a-header rounded-pill">商品一覧</div>
+                <div class="nav-link text-light a-header rounded-pill mt-2">商品一覧</div>
               <%end%>
             </li>
-            <li class="line-header nav-link">|</li>
+            <li class="line-header nav-link mt-2">|</li>
             <li>
               <%= link_to cart_items_path, class:"a-header" do %>
-                <div class="nav-link text-light a-header rounded-pill">カート</div>
+                <div class="nav-link text-light a-header rounded-pill mt-2">カート</div>
               <%end%>
             </li>
-            <li class="line-header nav-link">|</li>
+            <li class="line-header nav-link mt-2">|</li>
             <li>
               <%= link_to destroy_customer_session_path, class:"a-header", method: :delete do %>
-                <div class="nav-link text-light a-header rounded-pill">ログアウト</div>
+                <div class="nav-link text-light a-header rounded-pill mt-2">ログアウト</div>
               <%end%>
             </li>
 

@@ -161,7 +161,6 @@ body{
   border:1px #c34444;
   margin-right: 2px;
   margin-left: 2px;
-  border-radius: 2rem !important;
-  padding-left: 7px;
-  padding-right: 7px;
+  border-radius: 1rem !important;
+  padding-left: 10px;
 }
