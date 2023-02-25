@@ -1,12 +1,13 @@
 <div class="container my-5">
   <div class="row">
-    <div class="col">
-        <h3><span class="bg-light bg-gradient">商品編集</span></h3>
-        
+    <div class="col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto">
+      <div class="row d-flex justify-content-center mb-4">
+        <h3 class="col-6"><span>商品編集</span></h3>
+      </div>
         <% flash.each do |message_type, message| %>
           <div class="alert alert-<%= message_type %>"><%= sanitize message, tags: %w(br) %></div>
         <%end%>
-        
+
         <%= form_with model: @product, url: admin_product_path(@product.id), method: :patch, local:true, class: "container text-center pl-9" do |f| %>
         <div class="form-group row">
           <label class="col-4 text-right">商品画像</label>
@@ -35,7 +36,7 @@
           <%= f.radio_button :is_active, :false %>
           <%= f.label :is_active, "販売停止中", value: "false" %>
         </div>
-        <div class="form-group text-center">
+        <div class="form-group text-center mt-5">
           <%= f.submit "変更を保存", class: "btn btn-success btn-lg" %>
         </div>
         <%end%>

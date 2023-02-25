@@ -22,6 +22,9 @@ class Public::OrdersController < ApplicationController
      @order.postal_code = params[:order]["postal_code"]
      @order.address = params[:order]["address"]
      @order.name = params[:order]["name"]
+
+   else
+     render :new
    end
 
    @cart_items = current_customer.cart_items.all

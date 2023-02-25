@@ -14,21 +14,25 @@
                 <div class="nav-link text-light a-header rounded-pill">商品一覧</div>
               <%end%>
             </li>
+            <li class="line-header nav-link">|</li>
             <li>
               <%= link_to admin_customers_path, class:"a-header" do %>
                 <div class="nav-link text-light a-header rounded-pill">会員一覧</div>
               <%end%>
             </li>
+            <li class="line-header nav-link">|</li>
             <li>
               <%= link_to admin_root_path, class:"a-header" do %>
                 <div class="nav-link text-light a-header rounded-pill">注文履歴一覧</div>
               <%end%>
             </li>
+            <li class="line-header nav-link">|</li>
             <li>
               <%= link_to admin_genres_path, class:"a-header" do %>
                 <div class="nav-link text-light a-header rounded-pill">ジャンル一覧</div>
               <%end%>
             </li>
+            <li class="line-header nav-link">|</li>
             <li>
               <%= link_to destroy_admin_session_path, class:"a-header", method: :delete do %>
                 <div class="nav-link text-light a-header rounded-pill">ログアウト</div>
@@ -41,21 +45,25 @@
                 <div class="nav-link text-light a-header rounded-pill">商品一覧</div>
               <%end%>
             </li>
+            <li class="line-header nav-link">|</li>
             <li>
               <%= link_to admin_customers_path, class:"a-header" do %>
                 <div class="nav-link text-light a-header rounded-pill">会員一覧</div>
               <%end%>
             </li>
+            <li class="line-header nav-link">|</li>
             <li>
               <%= link_to admin_root_path, class:"a-header" do %>
                 <div class="nav-link text-light a-header rounded-pill">注文履歴一覧</div>
               <%end%>
             </li>
+            <li class="line-header nav-link">|</li>
             <li>
               <%= link_to admin_genres_path, class:"a-header" do %>
                 <div class="nav-link text-light a-header rounded-pill">ジャンル一覧</div>
               <%end%>
             </li>
+            <li class="line-header nav-link">|</li>
             <li>
               <%= link_to new_admin_session_path, class:"a-header" do %>
                 <div class="nav-link text-light a-header rounded-pill">ログイン</div>
@@ -64,30 +72,31 @@
 
           <% elsif customer_signed_in? %>
             <li>
-              <p class="nav-link text-light mr-5">ようこそ、<%= current_customer.last_name %>さん！</p>
+              <p class="nav-link text-light mr-5 mt-2">ようこそ、<%= current_customer.last_name %>さん！</p>
             </li>
             <li>
               <%= link_to customers_path, class:"a-header" do %>
-                <div class="nav-link text-light a-header rounded-pill">マイページ</div>
+                <div class="nav-link text-light a-header rounded-pill mt-2">マイページ</div>
               <%end%>
             </li>
+            <li class="line-header nav-link mt-2">|</li>
             <li>
               <%= link_to products_path, class:"a-header" do %>
-                <div class="nav-link text-light a-header rounded-pill">商品一覧</div>
+                <div class="nav-link text-light a-header rounded-pill mt-2">商品一覧</div>
               <%end%>
             </li>
+            <li class="line-header nav-link mt-2">|</li>
             <li>
               <%= link_to cart_items_path, class:"a-header" do %>
-                <div class="nav-link text-light a-header rounded-pill">カート</div>
+                <div class="nav-link text-light a-header rounded-pill mt-2">カート</div>
               <%end%>
             </li>
+            <li class="line-header nav-link mt-2">|</li>
             <li>
               <%= link_to destroy_customer_session_path, class:"a-header", method: :delete do %>
-                <div class="nav-link text-light a-header rounded-pill">ログアウト</div>
+                <div class="nav-link text-light a-header rounded-pill mt-2">ログアウト</div>
               <%end%>
             </li>
-
-
 
           <% else %>
             <li>
@@ -95,16 +104,19 @@
                 <div class="nav-link text-light a-header rounded-pill">About</div>
               <%end%>
             </li>
+            <li class="line-header nav-link">|</li>
             <li>
               <%= link_to products_path, class:"a-header" do %>
                 <div class="nav-link text-light a-header rounded-pill">商品一覧</div>
               <%end%>
             </li>
+            <li class="line-header nav-link">|</li>
             <li>
               <%= link_to new_customer_registration_path, class:"a-header" do %>
                 <div class="nav-link text-light a-header rounded-pill">新規登録</div>
               <%end%>
             </li>
+            <li class="line-header nav-link">|</li>
             <li>
               <%= link_to new_customer_session_path, class:"a-header" do %>
                 <div class="nav-link text-light a-header rounded-pill">ログイン</div>
@@ -115,7 +127,7 @@
       </div>
     </div>
     <div>
-      <% if admin_signed_in? %>
+      <% if request.path.match(/\/admin(\/)?/) && admin_signed_in? %>
         <%= render 'layouts/admin_search' %>
       <% else %>
         <%= render 'layouts/search' %>
