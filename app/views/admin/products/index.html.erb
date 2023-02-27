@@ -1,0 +1,40 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-10">
+      <h3><span class="bg-light bg-gradient">商品一覧</span></h3>
+    </div>
+    <div class="col-2 ml-auto">
+      <%= link_to "+", new_admin_product_path, class: "btn btn-lg rounded-pill border shadow-sm" %>
+    </div>
+    <table class="table table-borderless border-top mt-3">
+      <thead class="bg-light">
+        <th class="border-top">商品ID</th>
+        <th>商品名</th>
+        <th>税抜価格</th>
+        <th>ジャンル</th>
+        <th>ステータス</th>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= link_to product.name, admin_product_path(product.id), class: "text-dark border-bottom border-dark" %></td>
+            <td><%= product.price.to_s(:delimited) %></td>
+            <td><%= product.genre.name %></td>
+            <td>
+              <!--販売中と販売停止中で色を変えなければならないため、条件分岐で表示-->
+              <% if product.is_active == true %>
+                <strong class="text-success">販売中</strong>
+              <% else %>
+                <strong class="text-muted">販売停止中</strong>
+              <%end%>
+            </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+    <div class="mx-auto mt-5">
+      <%= paginate @products %>
+    </div>
+  </div>
+</div>

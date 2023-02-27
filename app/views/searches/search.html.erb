@@ -1,0 +1,97 @@
+<% if admin_signed_in? %>
+  <% if @range == "Product" %>
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-10">
+          <h3><span class="bg-light bg-gradient">検索結果/商品一覧</span></h3>
+        </div>
+        <div class="col-2 ml-auto">
+          <%= link_to "+", new_admin_product_path, class: "btn btn-lg rounded-pill shadow-sm" %>
+        </div>
+        <table class="table table-borderless border-top mt-3">
+          <thead class="bg-light">
+            <th class="border-top">商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+          </thead>
+          <tbody>
+            <% @products.each do |product| %>
+              <tr>
+                <td><%= product.id %></td>
+                <td><%= link_to product.name, admin_product_path(product.id), class: "text-dark border-bottom border-dark" %></td>
+                <td><%= product.price.to_s(:delimited) %></td>
+                <td><%= product.genre.name %></td>
+                <td>
+                  <!--販売中と販売停止中で色を変えなければならないため、条件分岐で表示-->
+                  <% if product.is_active == true %>
+                    <strong class="text-success">販売中</strong>
+                  <% else %>
+                    <strong class="text-muted">販売停止中</strong>
+                  <%end%>
+                </td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+        <div class="mx-auto mt-3">
+          <%= paginate @products %>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <div class="container my-5">
+      <div class="row">
+        <h4 class="mb-3 ml-5">検索結果/会員一覧</h4>
+      </div>
+      <div class="row px-5">
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th>会員ID</th>
+              <th>氏名</th>
+              <th>メールアドレス</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.id %></td>
+              <td><%= link_to customer.full_name,admin_customer_path(customer.id), class: "text-dark border-bottom border-dark" %></td>
+              <td><%= customer.email %></td>
+              <td>
+                <% if customer.is_deleted == false %>
+                  <strong class="text-success">有効</strong>
+                <% else %>
+                  <strong class="test-muted">退会</strong>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div class="row justify-content-center">
+        <%= paginate @customers %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class='container px-5 px-sm-0 my-5'>
+    <div class='row'>
+      <div class='col-md-2'>
+        <h5>ジャンル検索</h5>
+        <%= render 'public/products/genres', genres: @genres %>
+      </div>
+      <div class='col-md-8 offset-md-1'>
+        <div class='border-bottom form-group row form-inline'><h3>検索結果</h3><span>(全<%= @products.count %>件)</span></div>
+        <%= render 'public/products/index', products: @products%>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <%= paginate @products %>
+    </div>
+  </div>
+<% end %>

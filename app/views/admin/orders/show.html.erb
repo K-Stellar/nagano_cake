@@ -1,0 +1,79 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col">
+      <h3><span class="bg-light bg-gradient">注文履歴詳細</span></h3>
+      <table class="table table-borderless">
+        <tbody>
+          <tr>
+            <td class="w-25"><strong>購入者</strong></td>
+            <td><label class="border-bottom border-dark"><%= @order.customer.full_name %></label></td>
+          </tr>
+          <tr>
+            <td class="w-25">注文日</td>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+          </tr>
+          <tr>
+            <td class="w-25">配送先</td>
+            <td><%= @order.address %></td>
+          </tr>
+          <tr>
+            <td class="w-25">支払方法</td>
+            <td><%= @order.payment_type %></td>
+          </tr>
+          <tr>
+            <td class="w-25">注文ステータス</td>
+            <td>
+              <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local:true do |f| %> 
+                <%= f.select :status, Order.statuses.keys %>
+                <%= f.submit "更新", class: "btn btn-success ml-3" %>
+              <%end%>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <div class="row">
+        <div class="col-9">
+          <table class="table table-borderless border-top mt-3">
+             <thead class="bg-light">
+               <th class="border-top">商品ID</th>
+                <th>商品名</th>
+               <th>単価（税込）</th>
+                <th>数量</th>
+              <th>制作ステータス</th>
+            </thead>
+          <tbody>
+              <% @order_products.each do |order_product| %>
+                
+                  <tr>
+                    <td><%= order_product.id %></td>
+                    <td><%= order_product.product.name %></td>
+                    <td><%= order_product.price.to_s(:delimited) %></td>
+                    <td><%= order_product.amount %></td>
+                    <td>
+                      <%= form_with model: order_product, url: admin_order_product_path(order_product.id), method: :patch, local:true do |f| %> 
+                        <%= f.select :makig_status, OrderProduct.makig_statuses.keys %>
+                        <%= f.submit "更新", class: "btn btn-success ml-3" %>
+                      <%end%>
+                    </td>
+                  </tr>
+                
+              <%end%>
+            </tbody>
+          </table>
+        </div>
+      
+        <div class="col-3 pl-5 d-flex align-items-end">
+          <dl class="row">
+            <dt class="col-6"><strong>商品合計</strong></dt>
+            <dd class="col-6"><%= @order.total_payment - @order.shipping_cost %>円</dd>
+            <dt class="col-6"><strong>送料</strong></dt>
+            <dd class="col-6"><%= @order.shipping_cost %>円</dd>
+            <dt class="col-6"><strong>請求金額合計</strong></dt>
+            <dd class="col-6"><strong><%= @order.total_payment.to_s(:delimited) %>円</strong></dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

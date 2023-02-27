@@ -1,0 +1,64 @@
+ <div class='container'>
+    <div class='row'>
+      <div class="col-lg-8 col-md-10 col-sm-12 mx-6 mx-sm-auto px-auto my-5">
+
+          <p class= "text-center text-danger"><%= flash[:withdrawal] %></p>
+
+        <h3 class="mb-5 border-bottom"><span>新規会員登録</span></h3>
+
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <div class="form-group row my-3">
+              <%= f.label :last_name, '名前', class:'col-3' %>
+              <%= f.label :last_name, '(姓)', class:'col-1' %>
+              <%= f.text_field :last_name, autofocus: true, placeholder: "長野", autocomplete: "last_name", class:'col-3 form-control' %>
+              <%= f.label :first_name, '(名)', class:'col-2 text-right' %>
+              <%= f.text_field :first_name, placeholder: "景子", autocomplete: "first_name", class: "name", class:'col-3 form-control' %>
+            </div>
+
+            <div class="form-group row my-3">
+              <%= f.label :last_name_kana, 'フリガナ', class:'col-2' %>
+              <%= f.label :last_name_kana, '(セイ)', class:'col-2 text-right'%>
+              <%= f.text_field :last_name_kana, placeholder: "ナガノ", autocomplete: "last_name_kana", class: "col-3 form-control" %>
+              <%= f.label :first_name_kana, '(メイ)', class:'col-2 text-right'%>
+              <%= f.text_field :first_name_kana, placeholder: "ケイコ", autocomplete: "first_name_kana", class: "col-3 form-control" %>
+            </div>
+
+            <div class="form-group row">
+              <%= f.label :email, 'メールアドレス', class:'col-4' %>
+              <%= f.email_field :email, placeholder: "nagano@cake.com", autocomplete: "email", class:'col-3 form-control' %>
+            </div>
+
+            <div class="form-group row">
+              <%= f.label :postal_code, '郵便番号(ハイフンなし)', class:'col-4'%>
+              <%= f.text_field :postal_code, placeholder: "000000", autocomplete: "postal_code", class:'col-3 form-control' %>
+            </div>
+
+            <div class="form-group row">
+              <%= f.label :address, '住所', class:'col-4' %>
+              <%= f.text_field :address, placeholder: "長野県菓市美味町1-2-3", autocomplete: "address", class:'col-8 form-control' %>
+            </div>
+
+            <div class="form-group row">
+              <%= f.label :phone_num, '電話番号(ハイフンなし)', class:'col-4' %>
+              <%= f.text_field :phone_num, placeholder: "0000000", autocomplete: "phone_num", class:'col-3 form-control' %>
+            </div>
+
+            <div class="form-group row">
+              <%= f.label :password, 'パスワード(6文字以上)', class:'col-4' %>
+              <%= f.password_field :password, autocomplete: "new-password", class:'col-3 form-control' %>
+            </div>
+
+            <div class="form-group row">
+              <%= f.label :password_confirmation, 'パスワード(確認用)',class:'col-4' %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class:'col-3 form-control' %>
+            </div>
+
+            <div class="form-group row">
+              <%= f.submit "新規登録", class:'btn btn-success btn-lg col-2 offset-4'%>
+            </div>
+        <% end %>
+        <h3 class="mb-5 pt-3 border-bottom "><span>すでに登録済みの方</span></h3>
+        <p class="form-group form-inline offset-4"><%= render "public/shared/links" %>からログインしてください</p>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,15 @@
+<div class='container px-5 px-sm-0 my-5'>
+  <div class='row'>
+    <div class='col-md-2'>
+      <h5>ジャンル検索</h5>
+      <%= render 'public/products/genres', genres: @genres %>
+    </div>
+    <div class='col-md-8 offset-md-1 mb-4'>
+      <div class='border-bottom form-group row form-inline'><h3>ジャンル / "<%= @genre.name %>" 一覧</h3><span>(全<%= @genre.products.count %>件)</span></div>
+      <%= render 'public/products/index', products: @genre_product %>
+    </div>
+  </div>
+  <div class="row justify-content-center my-5">
+    <%= paginate @genre_product %>
+  </div>
+</div>

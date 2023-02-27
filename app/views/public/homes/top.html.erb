@@ -1,0 +1,20 @@
+<div class='container px-5 px-sm-0 my-5'>
+  <p class= "text-center text-success"><%= flash[:thank_you] %></p>
+  <div class='row'>
+    <div class='col-md-2'>
+      <h5>ジャンル検索</h5>
+      <%= render 'public/products/genres', genres: @genres %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+      <div class="row cakeimg1">
+        <div class="m-auto">
+        </div>
+      </div>
+      <div class='border-bottom form-group row form-inline mt-5'><h3>新着商品</h3></div>
+      <%= render 'public/products/index', products: @products%>
+      <div class="row justify-content-end mt-5">
+        <%= link_to "全ての商品を見る >", products_path, class:"next_button a" %>
+      </div>
+    </div>
+  </div>
+</div>
